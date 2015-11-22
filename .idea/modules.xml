@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/NoteCards.iml" filepath="$PROJECT_DIR$/NoteCards.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/note-card-alfin.iml" filepath="$PROJECT_DIR$/note-card-alfin.iml" />
     </modules>
   </component>
 </project>
