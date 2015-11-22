@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/note_card_title"
+        android:text = "Course Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textSize="12pt"
+        android:textStyle="bold"
+        android:textColor="#2E2E2E"
+        />
+    <TextView
+        android:id="@+id/total_note_card"
+        android:text = "Total : 0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/note_card_title"
+        android:textSize="8pt"
+        android:textColor="#494949"/>
+
+
+</RelativeLayout>

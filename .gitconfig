@@ -1,0 +1,13 @@
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[user]
+	name = crdnblu
+	email = crdnblu@ymail.com
+
+[http]
+    proxy = http://120425:06120425@wsa-sn.pcci.edu:3128
+
+[https]
+    proxy = https://120425:06120425@wsa-sn.pcci.edu:3128
