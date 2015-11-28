@@ -13,27 +13,17 @@ public class NoteCard {
     private UUID   mNotecardId; // Notecard ID
     private String mTitle;      // Notecard Title
     private Date   mDate;       // Notecard Date
-    private List<OtherSideNote> mOtherSideNote;
+    private String mOtherSide;  // Other side of notecard
 
     // Constructor
     public NoteCard() {
         mNotecardId    = UUID.randomUUID();
         mDate          = new Date();
-        mOtherSideNote = new ArrayList<>();
-    }
-
-    // Add verse to chapter
-    public void addOtherSideNote(OtherSideNote otherSide) {
-        mOtherSideNote.add(otherSide);
     }
 
     /**********************************************************************/
     /*                         Getter Functions                           */
     /**********************************************************************/
-    public List<OtherSideNote> getOtherSideNote() {
-        return mOtherSideNote;
-    }
-
     public UUID getNotecardId() {
         return mNotecardId;
     }
