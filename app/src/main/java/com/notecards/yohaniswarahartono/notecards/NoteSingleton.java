@@ -14,15 +14,14 @@ public class NoteSingleton {
     private List<NoteCard> mNotecards;
     private Context myContext;
 
-    public static NoteSingleton get(Context context) {
+    public static NoteSingleton get() {
         if (sNoteSingleton == null) {
-            sNoteSingleton = new NoteSingleton(context);
+            sNoteSingleton = new NoteSingleton();
         }
         return sNoteSingleton;
     }
 
-    private NoteSingleton(Context context) {
-        myContext = context.getApplicationContext();
+    private NoteSingleton() {
         mNotecards = new ArrayList<>();
     }
 
