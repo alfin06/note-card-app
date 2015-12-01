@@ -1,5 +1,6 @@
 package com.notecards.yohaniswarahartono.notecards;
 
+import android.support.v4.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import java.util.List;
 
 public class SubjectListFragment extends Fragment {
 
+    private static final String ADD_DIALOG = "AddSubject";
     // Member variables
     private RecyclerView    SubjectRecyclerView; // Recycler View for subject list
     private SubjectAdapter  Adapter;              // Adapter
@@ -24,6 +27,14 @@ public class SubjectListFragment extends Fragment {
     /**********************************************************************************************/
     /*                                          Create View                                       */
     /**********************************************************************************************/
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -37,15 +48,16 @@ public class SubjectListFragment extends Fragment {
         return view;
     }
 
-/*    //    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        //  getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+    {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_main, menu);
     }
 
-    //    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -54,23 +66,22 @@ public class SubjectListFragment extends Fragment {
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_add:
-                mSubject = new Subject();
-                mSubject.setTitle("Subject #" + addIndex);
-                mNoteSingleton.addNoteCard(mSubject);
-                mNoteCardTitle.setText(mNoteSingleton.showSubject());
-                addIndex++;
+                FragmentManager manager = getFragmentManager();
+                DialogSubjectFragment dialog = new DialogSubjectFragment();
+                dialog.show(manager, ADD_DIALOG);
+
                 return true;
 
-            case R.id.action_del:
+           /* case R.id.action_del:
                 mNoteSingleton.deleteNoteCard(mSubject);
                 mNoteCardTitle.setText(mNoteSingleton.showSubject());
                 addIndex--;
-                return true;
+                return true;*/
 
             default:
                 return true;
         }
-    } */
+    }
 
     /***************************************************************************/
     /*             Keep track the interface if user make some changes          */

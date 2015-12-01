@@ -23,14 +23,6 @@ public class NoteSingleton {
 
     private NoteSingleton() {
         mSubjects = new ArrayList<>();
-
-        for(int i = 0; i<5; i++) {
-            Subject subject = new Subject();
-            subject.setTitle("Class " + i);
-            NoteCard noteCard = new NoteCard();
-            subject.addNoteCard(noteCard);
-            mSubjects.add(subject);
-        }
     }
 
     public Subject getSubject(UUID id) {
@@ -39,6 +31,11 @@ public class NoteSingleton {
                 return subject;
         }
         return null;
+    }
+
+    public void addSubject(Subject subject)
+    {
+        mSubjects.add(subject);
     }
 
     public List<Subject> getSubjects() {
