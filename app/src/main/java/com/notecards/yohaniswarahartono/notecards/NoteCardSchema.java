@@ -5,7 +5,7 @@ package com.notecards.yohaniswarahartono.notecards;
  */
 public class NoteCardSchema {
     public static final class NoteCardTable {
-        public static final String NAME = "NoteCard";
+        public static final String NAME = "Subject";
 
         public static final class Cols {
             public static final String UUID = "uuid";

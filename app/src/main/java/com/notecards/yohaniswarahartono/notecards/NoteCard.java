@@ -6,40 +6,54 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Created by Alfin Rahardja on 11/21/2015.
+ * Created by Alfin Rahardja on 11/30/2015.
  */
 public class NoteCard {
 
-    private UUID   mNotecardId; // Notecard ID
-    private String mTitle;      // Notecard Title
-    private Date   mDate;       // Notecard Date
-    private String mOtherSide;  // Other side of notecard
+    // Member variables
+    private String mOtherSide;     // Other side array
+    private UUID mNoteCardId;    // Unique NoteCard Id
+    private String mNoteCardTitle; // NoteCard title
+    private Date mDate;         // Notecard Date
+
 
     // Constructor
     public NoteCard() {
-        mNotecardId    = UUID.randomUUID();
-        mDate          = new Date();
+        mNoteCardId = UUID.randomUUID();
+        mDate = new Date();
     }
 
     /**********************************************************************/
     /*                         Getter Functions                           */
     /**********************************************************************/
-    public UUID getNotecardId() {
-        return mNotecardId;
-    }
-
     public Date getDate() {
         return mDate;
     }
 
-    public String getTitle() {
-        return mTitle;
+    public UUID getNoteCardId() {
+        return mNoteCardId;
+    }
+
+    public String getNoteCardTitle() {
+        return mNoteCardTitle;
+    }
+
+    public String getOtherSide() {
+        return mOtherSide;
     }
 
     /**********************************************************************/
     /*                         Setter Functions                           */
     /**********************************************************************/
-    public void setTitle(String title) {
-        mTitle = title;
+    public void setNoteCardId(UUID noteCardId) {
+        mNoteCardId = noteCardId;
+    }
+
+    public void setNoteCardTitle(String noteCardTitle) {
+        mNoteCardTitle = noteCardTitle;
+    }
+
+    public void setOtherSide(String otherSide) {
+        mOtherSide = otherSide;
     }
 }

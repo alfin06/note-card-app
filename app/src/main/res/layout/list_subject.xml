@@ -23,5 +23,11 @@
         android:textSize="8pt"
         android:textColor="#494949"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"
+        android:layout_below="@id/total_note_card"/>
+
 
 </RelativeLayout>

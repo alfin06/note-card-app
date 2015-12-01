@@ -9,18 +9,14 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     NoteSingleton mNoteSingleton;
-    NoteCard mNotecard;
+    Subject mNotecard;
     int addIndex = 1;
     TextView mText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recycler_view);
-
-        mNoteSingleton.get();
-        mText = (TextView)findViewById(R.id.note_card_recycler_view);
-        mText.setText(mNoteSingleton.showNoteCard());
+        setContentView(R.layout.fragment_subject);
     }
 
     @Override
@@ -40,16 +36,16 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_add:
-                mNotecard = new NoteCard();
+                mNotecard = new Subject();
                 mNotecard.setTitle("Crime #" + addIndex);
                 mNoteSingleton.addNoteCard(mNotecard);
-                mText.setText(mNoteSingleton.showNoteCard());
+                mText.setText(mNoteSingleton.showSubject());
                 addIndex++;
                 return true;
 
             case R.id.action_del:
                 mNoteSingleton.deleteNoteCard(mNotecard);
-                mText.setText(mNoteSingleton.showNoteCard());
+                mText.setText(mNoteSingleton.showSubject());
                 addIndex--;
                 return true;
 

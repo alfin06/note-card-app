@@ -11,7 +11,7 @@ import java.util.UUID;
  */
 public class NoteSingleton {
     private static NoteSingleton sNoteSingleton;
-    private List<NoteCard> mNotecards;
+    private List<Subject> mSubjects;
     private Context myContext;
 
     public static NoteSingleton get() {
@@ -22,39 +22,63 @@ public class NoteSingleton {
     }
 
     private NoteSingleton() {
-        mNotecards = new ArrayList<>();
+        mSubjects = new ArrayList<>();
+
+        for(int i = 0; i<5; i++) {
+            Subject subject = new Subject();
+            subject.setTitle("Class " + i);
+            NoteCard noteCard = new NoteCard();
+            subject.addNoteCard(noteCard);
+            mSubjects.add(subject);
+        }
     }
 
-    public NoteCard getNoteCard(UUID id) {
-        for (NoteCard notecard : getNoteCards()) {
-            if(notecard.getNotecardId().equals(id))
-                return notecard;
+    public Subject getSubject(UUID id) {
+        for (Subject subject : getSubjects()) {
+            if(subject.getSubjectId().equals(id))
+                return subject;
         }
         return null;
     }
 
-    public List<NoteCard> getNoteCards() {
-        return mNotecards;
+    public List<Subject> getSubjects() {
+        return mSubjects;
     }
 
-    public String showNoteCard() {
+    public List<NoteCard> getNoteCards() {return mSubjects.get(0).getNoteCards();}
+
+    // Get a particular NoteCard
+    public  List<NoteCard> getNoteCard(UUID subjectId) {
+        for(Subject subject: mSubjects) {
+            if(subject.getSubjectId().equals(subjectId)){
+                return subject.getNoteCards();
+            }
+        }
+
+        return null;
+    }
+
+
+
+    public String showSubject() {
         String title = "";
 
-        for (NoteCard notecard : getNoteCards()) {
-            title += notecard.getTitle() + "\n";
+        for (Subject subject : getSubjects()) {
+            title += subject.getTitle() + "\n";
         }
         return title;
     }
 
-    public void addNoteCard(NoteCard notecard) {
-        mNotecards.add(notecard);
+    public void addNoteCard(Subject subject) {
+        NoteCard noteCard = new NoteCard();
+        subject.addNoteCard(noteCard);;
     }
 
-    public void deleteNoteCard(NoteCard n) {
+    public void deleteNoteCard(Subject n) {
         int location = 0;
-        for (NoteCard notecard : getNoteCards()) {
-            if(notecard.getNotecardId().equals(n.getNotecardId()))
-                mNotecards.remove(location);
+        for (Subject subject : getSubjects()) {
+            if(subject.getSubjectId().equals(n.getSubjectId()))
+                mSubjects.remove(location);
 
             location++;
         }

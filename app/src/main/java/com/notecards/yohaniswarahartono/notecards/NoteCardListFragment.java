@@ -5,122 +5,104 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.util.List;
+import java.util.UUID;
 
+/**
+ * Created by Alfin Rahardja on 11/30/2015.
+ */
 public class NoteCardListFragment extends Fragment {
-    private RecyclerView NoteCardRecyclerView; // Recycler View for note card list
-    private NoteCardAdapter Adapter;
+    // Constant variables
+    public static final String EXTRA_SUBJECT_ID = "Subject Id";
 
+    // Member variables
+    private RecyclerView    mNoteCardRecyclerView; // Book recycler view
+    private NoteCardAdapter  mAdapter;             // Adapter
+    private UUID            mSubjectId;           // Unique subject Id
+    private Subject         mSubject;             // Specific subject
 
-    /**********************************************************************************************/
-    /*                                          Create View                                       */
-
-    /**********************************************************************************************/
+    /***************************************************************************/
+    /*                  Create the layout for book choices                     */
+    /***************************************************************************/
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.recycler_view, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_notecard, container, false);
 
-        NoteCardRecyclerView = (RecyclerView) view.findViewById(R.id.note_card_recycler_view);
-        NoteCardRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mNoteCardRecyclerView = (RecyclerView) view.findViewById(R.id.notecard_recycler_view);
+        mNoteCardRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        NoteSingleton noteSingleton = NoteSingleton.get();
-        List<NoteCard> notecard = noteSingleton.getNoteCards();
-        Adapter = new NoteCardAdapter(notecard);
-        NoteCardRecyclerView.setAdapter(Adapter);
+        mSubjectId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_SUBJECT_ID);
+        mSubject   = NoteSingleton.get().getSubject(mSubjectId);
+        Log.d("TESTER", mSubjectId.toString());
+        updateUserInterface();
 
         return view;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        switch (id) {
-            case R.id.action_add:
-                mNoteCard = new NoteCard();
-                mNoteCard.setTitle("NoteCard #" + addIndex);
-                mNoteSingleton.addNoteCard(mNoteCard);
-                mNoteCardTitle.setText(mNoteSingleton.showNoteCard());
-                addIndex++;
-                return true;
-
-            case R.id.action_del:
-                mNoteSingleton.deleteNoteCard(mNoteCard);
-                mNoteCardTitle.setText(mNoteSingleton.showNoteCard());
-                addIndex--;
-                return true;
-
-            default:
-                return true;
-        }
-    }
-
     /***************************************************************************/
     /*             Keep track the interface if user make some changes          */
-
     /***************************************************************************/
     @Override
     public void onResume() {
-        NoteSingleton lab = NoteSingleton.get();
-        List<NoteCard> notecards = lab.getNoteCards();
         super.onResume();
-        if (Adapter == null) {
-            Adapter = new NoteCardAdapter(notecards);
-            NoteCardRecyclerView.setAdapter(Adapter);
-        } else {
-            Adapter.notifyDataSetChanged();
+        updateUserInterface();
+    }
+
+    /***************************************************************************/
+    /*                           Update the user interface                     */
+    /***************************************************************************/
+    private void updateUserInterface() {
+        NoteSingleton lab = NoteSingleton.get();
+        List<NoteCard> notecard = lab.getNoteCard(mSubjectId);
+        mSubject  = NoteSingleton.get().getSubject(mSubjectId);
+
+        if (mAdapter == null) {
+            mAdapter = new NoteCardAdapter(notecard, mSubject);
+            mNoteCardRecyclerView.setAdapter(mAdapter);
+        }
+        else {
+            mAdapter.notifyDataSetChanged();
         }
     }
 
     /***************************************************************************/
     /*  Create the holder for each book and set up an action if the book       */
     /*  is clicked                                                             */
-
     /***************************************************************************/
-    private class NoteCardHolder extends RecyclerView.ViewHolder
-            implements View.OnClickListener {
-        private TextView mTotalNoteCard;  // Total notecards
-        private NoteCard mNoteCard;       // Book class
-        private TextView mNoteCardTitle;  // NoteCard title
-        private int addIndex = 10;
-        private NoteSingleton mNoteSingleton;
+    private class NoteCardHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private TextView mNoteCardTitle;
+        private TextView mDate;
+        private NoteCard mNoteCard;       // Chapter class
+        private Subject  mSubject;        // Book class
 
         public NoteCardHolder(View itemView) {
             super(itemView);
-            mNoteCardTitle = (TextView) itemView.findViewById(R.id.note_card_title);
-            mTotalNoteCard = (TextView) itemView.findViewById(R.id.total_note_card);
+            itemView.setOnClickListener(this);
+            mNoteCardTitle = (TextView)itemView.findViewById(R.id.note_card_title);
+            mDate = (TextView)itemView.findViewById(R.id.date);
         }
 
-        public void bindNoteCard(NoteCard notecard) {
+        public void bindNoteCard(NoteCard notecard, int position, Subject subject) {
             mNoteCard = notecard;
-            mNoteCardTitle.setText(mNoteCard.getTitle());
-            int total = 5;//(mBooks.getTotalChaptersFinished() * 100) / mBooks.getTotalChapter();
-            mTotalNoteCard.setText(total + " ");
+            mSubject  = subject;
+            mNoteCardTitle.setText("NoteCard" + Integer.toString(position + 1));
+            mDate.setText(mNoteCard.getDate().toString());
         }
 
         @Override
-        public void onClick(View v) {
- /* */
-            Toast.makeText(getActivity(), mNoteCard.getTitle() + "clicked", Toast.LENGTH_SHORT).show();
+        public void onClick(View v){
+
         }
     }
 
@@ -129,22 +111,25 @@ public class NoteCardListFragment extends Fragment {
     /***************************************************************************/
     private class NoteCardAdapter extends RecyclerView.Adapter<NoteCardHolder> {
         private List<NoteCard> mNoteCards; // Array for each book
+        private Subject          mSubject;
 
-        public NoteCardAdapter(List<NoteCard> notecards) {
+        public NoteCardAdapter(List<NoteCard> notecards, Subject subject) {
             mNoteCards = notecards;
+            mSubject     = subject;
         }
 
         @Override
         public NoteCardHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            View view = layoutInflater.inflate(R.layout.list_view, parent, false);
+            View view = layoutInflater.inflate(R.layout.list_notecard, parent, false);
             return new NoteCardHolder(view);
         }
 
         @Override
         public void onBindViewHolder(NoteCardHolder holder, int position) {
+            Subject subject = mSubject;
             NoteCard notecard = mNoteCards.get(position);
-            holder.bindNoteCard(notecard);
+            holder.bindNoteCard(notecard, position, subject);
         }
 
         @Override
@@ -153,3 +138,4 @@ public class NoteCardListFragment extends Fragment {
         }
     }
 }
+

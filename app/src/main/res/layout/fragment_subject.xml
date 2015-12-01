@@ -1,0 +1,26 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:id="@+id/book_title"
+        android:background="#006600"
+        android:text="@string/subject"
+        android:textSize="14pt"
+        android:textColor="#ffffff"
+        android:typeface="serif"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id = "@+id/subject_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

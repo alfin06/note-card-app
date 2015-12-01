@@ -5,4 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="action_add">Add a Crime</string>
     <string name="action_del">Remove a Crime</string>
+    <string name="subject">Class Subject</string>
+    <string name="title_activity_note_card_list">NoteCardListActivity</string>
+    <string name="notecardList">Notecard List</string>
+    <string name="notecard_title">Notecard Title</string>
 </resources>
