@@ -18,6 +18,7 @@ public class DialogSubjectFragment extends DialogFragment
 
     private Subject newSubject;
     private EditText name;
+    private NoteSingleton singleton = NoteSingleton.get();
 
 
     @Override
@@ -37,17 +38,12 @@ public class DialogSubjectFragment extends DialogFragment
                             @Override
                             public void onClick(DialogInterface dialog, int which)
                             {
-                                addSubject(name.toString());
+                                String title = name.getText().toString();
+                                newSubject = new Subject();
+                                newSubject.setTitle(title);
+                                singleton.addSubject(newSubject);
                             }
                         })
                 .create();
     }
-
-
-    private void addSubject(String name)
-    {
-        Subject newSubject = new Subject();
-        newSubject.setTitle(name);
-    }
-
 }

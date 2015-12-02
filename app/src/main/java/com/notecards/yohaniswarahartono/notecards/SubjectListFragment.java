@@ -69,6 +69,7 @@ public class SubjectListFragment extends Fragment {
                 FragmentManager manager = getFragmentManager();
                 DialogSubjectFragment dialog = new DialogSubjectFragment();
                 dialog.show(manager, ADD_DIALOG);
+                onResume();
 
                 return true;
 
