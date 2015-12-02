@@ -14,6 +14,13 @@
         android:textStyle="bold"
         android:textColor="#2E2E2E"/>
 
+    <Button
+        android:id="@+id/add_subject_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/note_card_title"
+        android:text="Edit"/>
+
     <TextView
         android:id="@+id/total_note_card"
         android:text = "Total : 15"

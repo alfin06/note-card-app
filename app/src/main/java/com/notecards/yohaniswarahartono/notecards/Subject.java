@@ -39,6 +39,11 @@ public class Subject {
 
     public int getTotalNoteCard() {return mTotalNoteCard;}
 
+    public void setTotalNoteCard(int TotalNoteCard)
+    {
+        mTotalNoteCard = TotalNoteCard;
+    }
+
     /**********************************************************************/
     /*                         Setter Functions                           */
     /**********************************************************************/

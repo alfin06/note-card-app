@@ -133,7 +133,7 @@ public class SubjectListFragment extends Fragment {
         public void bindSubject(Subject notecard) {
             mSubject = notecard;
             mNoteCardTitle.setText(mSubject.getTitle());
-            int total = 5;//(mBooks.getTotalChaptersFinished() * 100) / mBooks.getTotalChapter();
+            int total = mSubject.getTotalNoteCard();
             mTotalNoteCard.setText("Total: " + total);
         }
 
