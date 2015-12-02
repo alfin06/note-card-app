@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -118,16 +119,18 @@ public class SubjectListFragment extends Fragment {
     /***************************************************************************/
     private class SubjectHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
-        private TextView mTotalNoteCard;  // Total notecards
-        private Subject mSubject;       // Book class
         private TextView mNoteCardTitle;  // Subject title
-        private int addIndex = 10;
+        private TextView mTotalNoteCard;  // Total note card
+        private Button   mEditButton;     // Edit Button
+
+        private Subject mSubject;         // Book class
         private NoteSingleton mNoteSingleton;
 
         public SubjectHolder(View itemView) {
             super(itemView);
             mNoteCardTitle = (TextView) itemView.findViewById(R.id.note_card_title);
             mTotalNoteCard = (TextView) itemView.findViewById(R.id.total_note_card);
+            mEditButton    = (Button)   itemView.findViewById(R.id.edit_subject_name_button);
         }
 
         public void bindSubject(Subject notecard) {

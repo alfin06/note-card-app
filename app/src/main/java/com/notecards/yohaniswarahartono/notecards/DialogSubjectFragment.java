@@ -1,6 +1,5 @@
 package com.notecards.yohaniswarahartono.notecards;
 
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -10,10 +9,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.EditText;
-
-import java.util.List;
 
 /**
  * Created by Yohan Hartono on 12/1/2015.
