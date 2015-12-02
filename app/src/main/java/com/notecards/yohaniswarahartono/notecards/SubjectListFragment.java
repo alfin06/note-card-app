@@ -19,7 +19,9 @@ import java.util.List;
 
 public class SubjectListFragment extends Fragment {
 
-    private static final String ADD_DIALOG = "AddSubject";
+    private static final String ADD_DIALOG   = "AddSubject";
+    private static final int    REQUEST_CODE = -1;
+
     // Member variables
     private RecyclerView    SubjectRecyclerView; // Recycler View for subject list
     private SubjectAdapter  Adapter;              // Adapter
@@ -43,7 +45,7 @@ public class SubjectListFragment extends Fragment {
         SubjectRecyclerView = (RecyclerView) view.findViewById(R.id.subject_recycler_view);
         SubjectRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        updateUserInterface();
+        onResume();
 
         return view;
     }
@@ -64,10 +66,12 @@ public class SubjectListFragment extends Fragment {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        switch (id) {
+        switch (id)
+        {
             case R.id.action_add:
                 FragmentManager manager = getFragmentManager();
                 DialogSubjectFragment dialog = new DialogSubjectFragment();
+                dialog.setTargetFragment(this, REQUEST_CODE);
                 dialog.show(manager, ADD_DIALOG);
                 onResume();
 
@@ -141,6 +145,16 @@ public class SubjectListFragment extends Fragment {
     }
 
     /***************************************************************************/
+    /*                      Refresh the list after dialog                      */
+    /***************************************************************************/
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        onResume();
+    }
+
+    /***************************************************************************/
     /*                      Create the adapter for each book                   */
     /***************************************************************************/
     private class SubjectAdapter extends RecyclerView.Adapter<SubjectHolder> {
@@ -160,6 +174,7 @@ public class SubjectListFragment extends Fragment {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
             View view = layoutInflater.inflate(R.layout.list_subject, parent, false);
             mNoteCardTitle = (TextView) view.findViewById(R.id.note_card_title);
+
             return new SubjectHolder(view);
         }
 

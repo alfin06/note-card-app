@@ -1,14 +1,19 @@
 package com.notecards.yohaniswarahartono.notecards;
 
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.EditText;
+
+import java.util.List;
 
 /**
  * Created by Yohan Hartono on 12/1/2015.
@@ -33,7 +38,7 @@ public class DialogSubjectFragment extends DialogFragment
         return new AlertDialog.Builder(getActivity())
                 .setView(v)
                 .setTitle(R.string.add_subject)
-                .setPositiveButton(android.R.string.ok,
+                .setPositiveButton(R.string.action_add,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which)
@@ -42,8 +47,21 @@ public class DialogSubjectFragment extends DialogFragment
                                 newSubject = new Subject();
                                 newSubject.setTitle(title);
                                 singleton.addSubject(newSubject);
+                                notifyToTarget(Activity.RESULT_OK);
                             }
                         })
+                .setNegativeButton(R.string.cancel_dialog, null)
                 .create();
     }
+
+    // Notify the fragment to refresh after dialog
+    private void notifyToTarget(int code) {
+        Fragment targetFragment = getTargetFragment();
+        if (targetFragment != null) {
+            targetFragment.onActivityResult(getTargetRequestCode(), code, null);
+        }
+    }
+
 }
+
+

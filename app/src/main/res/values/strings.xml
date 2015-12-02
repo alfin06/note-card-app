@@ -7,6 +7,7 @@
     <string name="add_subject">Add Subject</string>
     <string name="action_add">Add</string>
     <string name="action_del">Remove</string>
+    <string name="cancel_dialog">Cancel</string>
     <string name="subject">Class Subject</string>
     <string name="title_activity_note_card_list">NoteCardListActivity</string>
     <string name="notecardList">Notecard List</string>
