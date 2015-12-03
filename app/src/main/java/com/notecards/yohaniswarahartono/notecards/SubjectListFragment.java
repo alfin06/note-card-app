@@ -78,12 +78,6 @@ public class SubjectListFragment extends Fragment {
 
                 return true;
 
-           /* case R.id.action_del:
-                mNoteSingleton.deleteNoteCard(mSubject);
-                mNoteCardTitle.setText(mNoteSingleton.showSubject());
-                addIndex--;
-                return true;*/
-
             default:
                 return true;
         }
@@ -131,11 +125,9 @@ public class SubjectListFragment extends Fragment {
             mNoteCardTitle = (TextView) itemView.findViewById(R.id.note_card_title);
             mTotalNoteCard = (TextView) itemView.findViewById(R.id.total_note_card);
             mEditButton    = (Button)   itemView.findViewById(R.id.edit_subject_name_button);
-            mEditButton.setOnClickListener(new View.OnClickListener()
-            {
+            mEditButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v)
-                {
+                public void onClick(View v) {
                     // Set the arguments that will be passed to edit dialog fragment
                     Bundle subject_id = new Bundle();
                     subject_id.putSerializable(SEND_SUBJECT_ID, mSubject.getSubjectId());

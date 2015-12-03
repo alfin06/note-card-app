@@ -45,8 +45,8 @@ public class DialogEditSubjectName extends DialogFragment
 
         return new AlertDialog.Builder(getActivity())
                 .setView(v)
-                .setTitle("Edit Text")
-                .setPositiveButton("OK",
+                .setTitle(R.string.edit_name)
+                .setPositiveButton(R.string.action_ok,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which)
@@ -57,7 +57,7 @@ public class DialogEditSubjectName extends DialogFragment
                             }
                         })
                 .setNegativeButton(R.string.cancel_dialog, null)
-                .setNeutralButton("Delete",
+                .setNeutralButton(R.string.action_delete,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which)

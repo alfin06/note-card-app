@@ -8,11 +8,11 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="38dp"
         android:id="@+id/book_title"
-        android:background="#006600"
+        android:background="#ff6347"
         android:text="@string/subject"
-        android:textSize="14pt"
+        android:textSize="12pt"
         android:textColor="#ffffff"
         android:typeface="serif"
         android:textStyle="bold"

@@ -11,10 +11,4 @@
         android:orderInCategory="100"
         app:showAsAction="ifRoom|withText"/>
 
-    <item
-        android:id="@+id/action_del"
-        android:title="@string/action_del"
-        android:orderInCategory="100"
-        app:showAsAction="ifRoom|withText"/>
-
 </menu>

@@ -6,9 +6,11 @@
     <string name="action_settings">Settings</string>
     <string name="add_subject">Add Subject</string>
     <string name="action_add">Add</string>
-    <string name="action_del">Remove</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_ok">OK</string>
+    <string name="edit_name">Edit Name</string>
     <string name="cancel_dialog">Cancel</string>
-    <string name="subject">Class Subject</string>
+    <string name="subject">Subject</string>
     <string name="title_activity_note_card_list">NoteCardListActivity</string>
     <string name="notecardList">Notecard List</string>
     <string name="notecard_title">Notecard Title</string>

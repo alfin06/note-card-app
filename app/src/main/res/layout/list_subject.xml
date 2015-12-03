@@ -17,9 +17,11 @@
     <Button
         android:id="@+id/edit_subject_name_button"
         android:layout_width="85px"
-        android:layout_height="wrap_content"
+        android:layout_height="85px"
         android:layout_alignRight="@+id/note_card_title"
-        android:drawableLeft="@drawable/ic_erase"/>
+        android:drawableLeft="@drawable/ic_erase"
+        android:gravity="center"
+        android:backgroundTint="#ff6347"/>
 
     <TextView
         android:id="@+id/total_note_card"
