@@ -18,14 +18,13 @@ import java.util.List;
 
 public class SubjectListFragment extends Fragment {
 
-
-    private static final String ADD_DIALOG      = "AddSubject";
-    private static final String SEND_SUBJECT_ID = "SubjectID";
-    private static final int    REQUEST_CODE    = -1;
+    private static final String ADD_DIALOG      = "AddSubject"; // Tag for add subject dialog
+    private static final String SEND_SUBJECT_ID = "SubjectID";  // Tag to send subject id
+    private static final int    REQUEST_CODE    = -1;           // Request Code for receive notification
 
     // Member variables
     private RecyclerView    SubjectRecyclerView; // Recycler View for subject list
-    private SubjectAdapter  Adapter;              // Adapter
+    private SubjectAdapter  Adapter;             // Adapter
 
     /**********************************************************************************************/
     /*                                          Create View                                       */
@@ -36,7 +35,6 @@ public class SubjectListFragment extends Fragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -75,7 +73,6 @@ public class SubjectListFragment extends Fragment {
                 dialog.setTargetFragment(this, REQUEST_CODE);
                 dialog.show(manager, ADD_DIALOG);
                 onResume();
-
                 return true;
 
             default:
@@ -111,9 +108,10 @@ public class SubjectListFragment extends Fragment {
     /*  Create the holder for each book and set up an action if the book       */
     /*  is clicked                                                             */
     /***************************************************************************/
-    private class SubjectHolder extends RecyclerView.ViewHolder
-            implements View.OnClickListener {
-        private TextView mNoteCardTitle;  // Subject title
+    private class SubjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener
+    {
+
+        private TextView mSubjectTitle;  // Subject title
         private TextView mTotalNoteCard;  // Total note card
         private Button   mEditButton;     // Edit Button
 
@@ -122,7 +120,8 @@ public class SubjectListFragment extends Fragment {
 
         public SubjectHolder(View itemView) {
             super(itemView);
-            mNoteCardTitle = (TextView) itemView.findViewById(R.id.note_card_title);
+            itemView.setOnClickListener(this);
+            mSubjectTitle  = (TextView) itemView.findViewById(R.id.note_card_title);
             mTotalNoteCard = (TextView) itemView.findViewById(R.id.total_note_card);
             mEditButton    = (Button)   itemView.findViewById(R.id.edit_subject_name_button);
             mEditButton.setOnClickListener(new View.OnClickListener() {
@@ -143,9 +142,9 @@ public class SubjectListFragment extends Fragment {
             });
         }
 
-        public void bindSubject(Subject notecard) {
-            mSubject = notecard;
-            mNoteCardTitle.setText(mSubject.getTitle());
+        public void bindSubject(Subject subject) {
+            mSubject = subject;
+            mSubjectTitle.setText(mSubject.getTitle());
             int total = mSubject.getTotalNoteCard();
             mTotalNoteCard.setText("Total: " + total);
         }
@@ -171,30 +170,32 @@ public class SubjectListFragment extends Fragment {
     /*                      Create the adapter for each book                   */
     /***************************************************************************/
     private class SubjectAdapter extends RecyclerView.Adapter<SubjectHolder> {
+
+        private TextView mSubjectTitle;
+
         private List<Subject> mSubjects; // Array for each book
         private Subject mSubject;
         private NoteSingleton mNoteSingleton;
-        private TextView mNoteCardTitle;
         private int addIndex;
 
-        public SubjectAdapter(List<Subject> notecards) {
-            mSubjects = notecards;
+        public SubjectAdapter(List<Subject> subjects) {
+            mSubjects = subjects;
             mNoteSingleton = NoteSingleton.get();
         }
 
         @Override
         public SubjectHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
-            View view = layoutInflater.inflate(R.layout.list_subject, parent, false);
-            mNoteCardTitle = (TextView) view.findViewById(R.id.note_card_title);
+            View view     = layoutInflater.inflate(R.layout.list_subject, parent, false);
+            mSubjectTitle = (TextView) view.findViewById(R.id.note_card_title);
 
             return new SubjectHolder(view);
         }
 
         @Override
         public void onBindViewHolder(SubjectHolder holder, int position) {
-            Subject notecard = mSubjects.get(position);
-            holder.bindSubject(notecard);
+            Subject noteCardSubject = mSubjects.get(position);
+            holder.bindSubject(noteCardSubject);
         }
 
         @Override

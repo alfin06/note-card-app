@@ -19,13 +19,11 @@ import java.util.UUID;
  */
 public class DialogEditSubjectName extends DialogFragment
 {
-
     private static final String SEND_SUBJECT_ID = "SubjectID";
     private Subject currentSubject;
     private EditText name;
     private TextView title;
     private NoteSingleton singleton = NoteSingleton.get();
-
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
@@ -69,12 +67,11 @@ public class DialogEditSubjectName extends DialogFragment
                 .create();
     }
 
-    // Notify the fragment to refresh after dialog
+    // Notify the fragment to refresh after dialog dismissed
     private void notifyToTarget(int code) {
         Fragment targetFragment = getTargetFragment();
         if (targetFragment != null) {
             targetFragment.onActivityResult(getTargetRequestCode(), code, null);
         }
     }
-
 }

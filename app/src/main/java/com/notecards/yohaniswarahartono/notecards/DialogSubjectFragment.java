@@ -16,18 +16,15 @@ import android.widget.EditText;
  */
 public class DialogSubjectFragment extends DialogFragment
 {
-
-    private Subject newSubject;
     private EditText name;
+    private Subject newSubject;
     private NoteSingleton singleton = NoteSingleton.get();
-
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
         View v = LayoutInflater.from(getActivity())
                     .inflate(R.layout.add_subject_dialog, null);
-
 
         name = (EditText) v.findViewById(R.id.add_subject_edit_name);
 
@@ -51,7 +48,7 @@ public class DialogSubjectFragment extends DialogFragment
                 .create();
     }
 
-    // Notify the fragment to refresh after dialog
+    // Notify the fragment to refresh after dialog dismissed
     private void notifyToTarget(int code) {
         Fragment targetFragment = getTargetFragment();
         if (targetFragment != null) {
