@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,7 +18,7 @@ import android.widget.TextView;
 import java.util.List;
 
 public class SubjectListFragment extends Fragment {
-
+    // Constant Variables
     private static final String ADD_DIALOG      = "AddSubject"; // Tag for add subject dialog
     private static final String SEND_SUBJECT_ID = "SubjectID";  // Tag to send subject id
     private static final int    REQUEST_CODE    = -1;           // Request Code for receive notification
@@ -39,14 +40,11 @@ public class SubjectListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_subject, container, false);
-
-        SubjectRecyclerView = (RecyclerView) view.findViewById(R.id.subject_recycler_view);
-        SubjectRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        onResume();
-
-        return view;
+            View view = inflater.inflate(R.layout.fragment_subject, container, false);
+            SubjectRecyclerView = (RecyclerView) view.findViewById(R.id.subject_recycler_view);
+            SubjectRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            onResume();
+            return view;
     }
 
     @Override
@@ -99,7 +97,8 @@ public class SubjectListFragment extends Fragment {
         if (Adapter == null) {
             Adapter = new SubjectAdapter(subject);
             SubjectRecyclerView.setAdapter(Adapter);
-        } else {
+        }
+        else {
             Adapter.notifyDataSetChanged();
         }
     }
