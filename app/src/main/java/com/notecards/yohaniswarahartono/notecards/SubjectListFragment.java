@@ -18,8 +18,10 @@ import java.util.List;
 
 public class SubjectListFragment extends Fragment {
 
-    private static final String ADD_DIALOG   = "AddSubject";
-    private static final int    REQUEST_CODE = -1;
+
+    private static final String ADD_DIALOG      = "AddSubject";
+    private static final String SEND_SUBJECT_ID = "SubjectID";
+    private static final int    REQUEST_CODE    = -1;
 
     // Member variables
     private RecyclerView    SubjectRecyclerView; // Recycler View for subject list
@@ -129,6 +131,24 @@ public class SubjectListFragment extends Fragment {
             mNoteCardTitle = (TextView) itemView.findViewById(R.id.note_card_title);
             mTotalNoteCard = (TextView) itemView.findViewById(R.id.total_note_card);
             mEditButton    = (Button)   itemView.findViewById(R.id.edit_subject_name_button);
+            mEditButton.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    // Set the arguments that will be passed to edit dialog fragment
+                    Bundle subject_id = new Bundle();
+                    subject_id.putSerializable(SEND_SUBJECT_ID, mSubject.getSubjectId());
+
+                    // Setup the Dialog
+                    FragmentManager manager = getFragmentManager();
+                    DialogEditSubjectName editDialog = new DialogEditSubjectName();
+                    editDialog.setArguments(subject_id);
+                    editDialog.setTargetFragment(SubjectListFragment.this, REQUEST_CODE);
+                    editDialog.show(manager, ADD_DIALOG);
+                    onResume();
+                }
+            });
         }
 
         public void bindSubject(Subject notecard) {
