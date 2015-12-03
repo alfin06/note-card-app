@@ -57,6 +57,15 @@ public class DialogEditSubjectName extends DialogFragment
                             }
                         })
                 .setNegativeButton(R.string.cancel_dialog, null)
+                .setNeutralButton("Delete",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which)
+                            {
+                                singleton.deleteSubject(currentSubject);
+                                notifyToTarget(Activity.RESULT_OK);
+                            }
+                        })
                 .create();
     }
 

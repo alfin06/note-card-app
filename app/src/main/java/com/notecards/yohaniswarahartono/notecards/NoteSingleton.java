@@ -37,6 +37,12 @@ public class NoteSingleton {
         mSubjects.add(subject);
     }
 
+    public void deleteSubject(Subject subject)
+    {
+        mSubjects.remove(subject);
+    }
+
+
     public List<Subject> getSubjects() {
         return mSubjects;
     }
@@ -53,8 +59,6 @@ public class NoteSingleton {
 
         return null;
     }
-
-
 
     public String showSubject() {
         String title = "";
