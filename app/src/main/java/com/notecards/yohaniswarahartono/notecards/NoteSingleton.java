@@ -11,6 +11,7 @@ import java.util.UUID;
 public class NoteSingleton {
     private static NoteSingleton sNoteSingleton;
     private List<Subject> mSubjects;
+    private List<NoteCard> mNoteCards;
     private Context myContext;
 
     public static NoteSingleton get() {
@@ -22,6 +23,10 @@ public class NoteSingleton {
 
     private NoteSingleton() {
         mSubjects = new ArrayList<>();
+        Subject subject = new Subject();
+        NoteCard notecard = new NoteCard();
+        subject.addNoteCard(notecard);
+        mSubjects.add(subject);
     }
 
     public Subject getSubject(UUID id) {

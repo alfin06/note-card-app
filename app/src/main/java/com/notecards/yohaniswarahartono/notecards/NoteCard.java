@@ -11,10 +11,10 @@ import java.util.UUID;
 public class NoteCard {
 
     // Member variables
-    private String mOtherSide;     // Other side array
-    private UUID mNoteCardId;    // Unique NoteCard Id
+    private String mOtherSide;     // Other side
+    private UUID mNoteCardId;      // Unique NoteCard Id
     private String mNoteCardTitle; // NoteCard title
-    private Date mDate;         // Notecard Date
+    private Date mDate;            // Notecard Date
 
 
     // Constructor

@@ -19,7 +19,10 @@ import java.util.UUID;
  */
 public class DialogEditSubjectName extends DialogFragment
 {
+    // Constant Variables
     private static final String SEND_SUBJECT_ID = "SubjectID";
+
+    // Member Variables
     private Subject currentSubject;
     private EditText name;
     private TextView title;

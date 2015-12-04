@@ -59,15 +59,17 @@ public class NoteCardListFragment extends Fragment {
         mNoteCardRecyclerView = (RecyclerView) view.findViewById(R.id.notecard_recycler_view);
         mNoteCardRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        mSubjectId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_SUBJECT_ID);
+        mSubject   = NoteSingleton.get().getSubject(mSubjectId);
+
         onResume();
 
         return view;
     }
 
-    @Override
+ /*   @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
-        Log.d("a", "a");
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_main, menu);
     }
@@ -94,7 +96,7 @@ public class NoteCardListFragment extends Fragment {
             default:
                 return true;
         }
-    }
+    } */
 
     /***************************************************************************/
     /*             Keep track the interface if user make some changes          */
@@ -110,9 +112,8 @@ public class NoteCardListFragment extends Fragment {
     /***************************************************************************/
     private void updateUserInterface() {
         NoteSingleton lab = NoteSingleton.get();
-        mSubjectId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_SUBJECT_ID);
-        mSubject   = NoteSingleton.get().getSubject(mSubjectId);
         List<NoteCard> notecards = lab.getNoteCard(mSubjectId);
+        mSubject = NoteSingleton.get().getSubject(mSubjectId);
 
         if (mAdapter == null) {
             mAdapter = new NoteCardAdapter(notecards, mSubject);
@@ -131,8 +132,8 @@ public class NoteCardListFragment extends Fragment {
         private TextView mHeadTitle;
         private TextView mNoteCardTitle;
         private TextView mDate;
-        private NoteCard mNoteCard;       // Chapter class
-        private Subject  mSubject;        // Book class
+        private NoteCard mNoteCard;
+        private Subject  mSubject;
 
         public NoteCardHolder(View itemView) {
             super(itemView);
@@ -145,8 +146,7 @@ public class NoteCardListFragment extends Fragment {
         public void bindNoteCard(NoteCard notecard, int position, Subject subject) {
             mNoteCard = notecard;
             mSubject  = subject;
-            Log.d("A", "g");
-            mHeadTitle.setText("Lalala");
+            mHeadTitle.setText(mSubject.getTitle());
             mNoteCardTitle.setText("NoteCard" + Integer.toString(position + 1));
             mDate.setText(mNoteCard.getDate().toString());
         }
@@ -190,4 +190,3 @@ public class NoteCardListFragment extends Fragment {
         }
     }
 }
-

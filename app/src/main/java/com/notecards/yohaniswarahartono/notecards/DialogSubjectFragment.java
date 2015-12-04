@@ -16,6 +16,7 @@ import android.widget.EditText;
  */
 public class DialogSubjectFragment extends DialogFragment
 {
+    // Member Variables
     private EditText name;
     private Subject newSubject;
     private NoteSingleton singleton = NoteSingleton.get();
