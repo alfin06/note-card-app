@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:paddingTop="15px"
+        android:paddingLeft="25px"
+        android:paddingRight="25px"
+        android:paddingBottom="15px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:background="#000" />
+
+        <TextView
+            android:id="@+id/add_notecard_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:paddingTop="15px"
+            android:textColor="#000"
+            android:text="@string/subject_name"/>
+
+        <EditText
+            android:id="@+id/add_notecard_edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/add_subject_text"
+            android:paddingTop="10px" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

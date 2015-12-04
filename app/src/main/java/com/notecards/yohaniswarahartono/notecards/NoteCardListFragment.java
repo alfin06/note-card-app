@@ -2,8 +2,10 @@ package com.notecards.yohaniswarahartono.notecards;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -67,9 +69,10 @@ public class NoteCardListFragment extends Fragment {
         return view;
     }
 
- /*   @Override
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
+        Log.d("a", "b");
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_main, menu);
     }
@@ -86,8 +89,8 @@ public class NoteCardListFragment extends Fragment {
         switch (id)
         {
             case R.id.action_add:
-                FragmentManager manager = getFragmentManager();
-                DialogSubjectFragment dialog = new DialogSubjectFragment();
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                DialogNoteCardFragment dialog = DialogNoteCardFragment.newInstance(mSubjectId);
                 dialog.setTargetFragment(this, REQUEST_CODE);
                 dialog.show(manager, ADD_DIALOG);
                 onResume();
@@ -96,7 +99,7 @@ public class NoteCardListFragment extends Fragment {
             default:
                 return true;
         }
-    } */
+    }
 
     /***************************************************************************/
     /*             Keep track the interface if user make some changes          */
@@ -113,6 +116,7 @@ public class NoteCardListFragment extends Fragment {
     private void updateUserInterface() {
         NoteSingleton lab = NoteSingleton.get();
         List<NoteCard> notecards = lab.getNoteCard(mSubjectId);
+        Log.d("A", "a");
         mSubject = NoteSingleton.get().getSubject(mSubjectId);
 
         if (mAdapter == null) {
@@ -146,8 +150,9 @@ public class NoteCardListFragment extends Fragment {
         public void bindNoteCard(NoteCard notecard, int position, Subject subject) {
             mNoteCard = notecard;
             mSubject  = subject;
+            Log.d("a", "c");
             mHeadTitle.setText(mSubject.getTitle());
-            mNoteCardTitle.setText("NoteCard" + Integer.toString(position + 1));
+            mNoteCardTitle.setText(mNoteCard.getNoteCardTitle());
             mDate.setText(mNoteCard.getDate().toString());
         }
 
