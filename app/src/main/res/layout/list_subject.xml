@@ -4,39 +4,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/note_card_title"
-        android:text = "Course Name"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:id="@+id/layout_text"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:textSize="12pt"
-        android:textStyle="bold"
-        android:textColor="#2E2E2E"/>
+        android:background="@drawable/subject_info">
 
-    <Button
-        android:id="@+id/edit_subject_name_button"
-        android:layout_width="85px"
-        android:layout_height="85px"
-        android:layout_alignRight="@+id/note_card_title"
-        android:drawableLeft="@drawable/ic_erase"
-        android:gravity="center"
-        android:backgroundTint="#ff6347"/>
+        <TextView
+            android:id="@+id/note_card_title"
+            tools:text = "Course Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="5px"
+            android:textSize="12pt"
+            android:textStyle="bold"
+            android:textColor="#2E2E2E"/>
 
-    <TextView
-        android:id="@+id/total_note_card"
-        android:text = "Total : 15"
-        android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/total_note_card"
+            tools:text = "Total : 15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/note_card_title"
+            android:paddingLeft="15px"
+            android:textSize="8pt"
+            android:textColor="#494949"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"
+            android:layout_below="@id/total_note_card"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_button"
+        android:paddingTop="13px"
+        android:paddingRight="10px"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/note_card_title"
-        android:textSize="8pt"
-        android:textColor="#494949"/>
+        android:layout_alignRight="@+id/layout_text">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/black"
-        android:layout_below="@id/total_note_card"/>
+        <Button
+            android:paddingLeft="5px"
+            android:id="@+id/edit_subject_name_button"
+            android:layout_width="62px"
+            android:layout_height="62px"
+            android:drawableLeft="@drawable/ic_erase"
+            android:gravity="center"
+            android:background="@drawable/button_edit"/>
 
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -1,6 +1,8 @@
 package com.notecards.yohaniswarahartono.notecards;
 
 import android.content.Context;
+import android.location.Location;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -49,6 +51,10 @@ public class NoteSingleton {
         mSubjects.remove(subject);
     }
 
+    public void deleteAllSubject()
+    {
+        mSubjects.clear();
+    }
 
     public List<Subject> getSubjects() {
         return mSubjects;

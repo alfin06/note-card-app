@@ -20,6 +20,7 @@ import java.util.List;
 public class SubjectListFragment extends Fragment {
     // Constant Variables
     private static final String ADD_DIALOG      = "AddSubject"; // Tag for add subject dialog
+    private static final String DELETE_DIALOG   = "DeleteDialog"; // Tag for add subject dialog
     private static final String SEND_SUBJECT_ID = "SubjectID";  // Tag to send subject id
     private static final int    REQUEST_CODE    = -1;           // Request Code for receive notification
 
@@ -70,6 +71,14 @@ public class SubjectListFragment extends Fragment {
                 DialogSubjectFragment dialog = new DialogSubjectFragment();
                 dialog.setTargetFragment(this, REQUEST_CODE);
                 dialog.show(manager, ADD_DIALOG);
+                onResume();
+                return true;
+
+            case R.id.action_delete_all:
+                FragmentManager       delete_manager = getFragmentManager();
+                DialogDeleteAllSubject delete_dialog  = new DialogDeleteAllSubject();
+                delete_dialog.setTargetFragment(this, REQUEST_CODE);
+                delete_dialog.show(delete_manager, DELETE_DIALOG);
                 onResume();
                 return true;
 
