@@ -24,6 +24,7 @@ public class NoteCardFragment extends Fragment {
 
     // Constant Variables
     private static final String ARG_NOTECARD_ID = "NotecardID";
+    private static final String DIALOG_DATE = "DialogDate";
 
     // Member Variables
     private NoteCard mNoteCard;     // Subject class
@@ -52,20 +53,7 @@ public class NoteCardFragment extends Fragment {
 
         UUID notecardId = (UUID)getArguments().getSerializable(ARG_NOTECARD_ID);
         mNoteCard = NoteSingleton.get().getParticularNoteCard(notecardId);
-        Log.d("AA", notecardId.toString());
-        Log.d("AB", mNoteCard.getNoteCardId().toString());
 
-        mTopic = (EditText)v.findViewById(R.id.notecard_topic);
-
-        mDate = (Button)v.findViewById(R.id.notecard_date);
-        mDate.setText(mNoteCard.getDate().toString());
-        mDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager manager = getFragmentManager();
-                DatePickerFragment dialog = new DatePickerFragment();
-            }
-        });
 
         return v;
     }

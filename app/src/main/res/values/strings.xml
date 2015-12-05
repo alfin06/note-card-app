@@ -7,6 +7,7 @@
     <string name="add_subject">Add Subject</string>
     <string name="add_note_card">Add Notecard</string>
     <string name="action_add">Add</string>
+    <string name="action_edit">edit</string>
     <string name="action_delete">Delete</string>
     <string name="action_ok">OK</string>
     <string name="edit_name">Edit Name</string>
@@ -19,6 +20,7 @@
     <string name="topic_hint">Enter your topic here</string>
     <string name="topic_label">Topic</string>
     <string name="date_label">Date</string>
+    <string name="question">Question</string>
     <string name="date_picker_label">Date of notecard</string>
     <string name="title_activity_notecard_view_pager">NotecardViewPager</string>
 </resources>

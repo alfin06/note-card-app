@@ -11,16 +11,19 @@ import java.util.UUID;
 public class NoteCard {
 
     // Member variables
-    private String mOtherSide;     // Other side
+    private String mBackSide;     // Other side
     private UUID mNoteCardId;      // Unique NoteCard Id
     private String mNoteCardTitle; // NoteCard title
     private Date mDate;            // Notecard Date
+    private String mFrontSide;
 
 
     // Constructor
     public NoteCard() {
         mNoteCardId = UUID.randomUUID();
         mDate = new Date();
+        mBackSide = "";
+        mFrontSide = "";
     }
 
     /**********************************************************************/
@@ -38,8 +41,12 @@ public class NoteCard {
         return mNoteCardTitle;
     }
 
-    public String getOtherSide() {
-        return mOtherSide;
+    public String getBackSide() {
+        return mBackSide;
+    }
+
+    public String getFrontSide() {
+        return mFrontSide;
     }
 
     /**********************************************************************/
@@ -53,7 +60,15 @@ public class NoteCard {
         mNoteCardTitle = noteCardTitle;
     }
 
-    public void setOtherSide(String otherSide) {
-        mOtherSide = otherSide;
+    public void setBackSide(String backSide) {
+        mBackSide = backSide;
+    }
+
+    public void setFrontSide(String frontSide) {
+        mFrontSide = frontSide;
+    }
+
+    public void setDate(Date date) {
+        mDate = date;
     }
 }
