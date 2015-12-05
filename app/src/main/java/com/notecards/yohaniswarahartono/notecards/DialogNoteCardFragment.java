@@ -40,12 +40,12 @@ public class DialogNoteCardFragment extends DialogFragment {
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
         View v = LayoutInflater.from(getActivity())
-                .inflate(R.layout.add_notecard_dialog, null);
+                .inflate(R.layout.add_subject_dialog, null);
 
         mSubjectId = (UUID) getArguments().getSerializable(ARG_SUBJECT);
         mSubject = singleton.getSubject(mSubjectId);
 
-        name = (EditText) v.findViewById(R.id.add_note_card_edit);
+        name = (EditText) v.findViewById(R.id.add_subject_edit_name);
 
         return new AlertDialog.Builder(getActivity())
                 .setView(v)

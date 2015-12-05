@@ -26,10 +26,6 @@ public class NoteSingleton {
     private NoteSingleton() {
         mSubjects  = new ArrayList<>();
         mNoteCards = new ArrayList<>();
-        NoteCard notecard = new NoteCard();
-        Subject subject   = new Subject();
-        subject.addNoteCard(notecard);
-        mSubjects.add(subject);
     }
 
     // Get a particular subject
@@ -69,6 +65,18 @@ public class NoteSingleton {
     public List<NoteCard> getNoteCards() {return mSubjects.get(0).getNoteCards();}
 
     // Get a particular NoteCard
+    public  NoteCard getParticularNoteCard(UUID notecardId) {
+        for(Subject subject: mSubjects) {
+            for(NoteCard notecard: subject.getNoteCards())
+                if(notecard.getNoteCardId().equals(notecardId)){
+                    return notecard;
+            }
+        }
+
+        return null;
+    }
+
+    // Get a list of notecard
     public  List<NoteCard> getNoteCard(UUID subjectId) {
         for(Subject subject: mSubjects) {
             if(subject.getSubjectId().equals(subjectId)){

@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -49,14 +48,14 @@ public class NoteCardListFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_notecard, menu);
+        inflater.inflate(R.menu.menu_main, menu);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_notecard, container, false);
+        View view = inflater.inflate(R.layout.fragment_notecard_list, container, false);
         mNoteCardRecyclerView = (RecyclerView) view.findViewById(R.id.notecard_recycler_view);
         mNoteCardRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -166,7 +165,7 @@ public class NoteCardListFragment extends Fragment {
 
         @Override
         public void onClick(View v){
-            Intent moveLayout = NoteCardListActivity.newIntent(getActivity(), mSubject.getSubjectId());
+            Intent moveLayout = NotecardViewPager.newIntent(getActivity(), mNoteCard.getNoteCardId());
             startActivity(moveLayout);
         }
     }
