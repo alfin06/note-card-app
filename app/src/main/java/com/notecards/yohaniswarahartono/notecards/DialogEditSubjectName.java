@@ -25,7 +25,6 @@ public class DialogEditSubjectName extends DialogFragment
     // Member Variables
     private Subject currentSubject;
     private EditText name;
-    private TextView title;
     private NoteSingleton singleton = NoteSingleton.get();
 
     @Override
@@ -38,7 +37,6 @@ public class DialogEditSubjectName extends DialogFragment
         View v = LayoutInflater.from(getActivity())
                 .inflate(R.layout.add_subject_dialog, null);
 
-        title = (TextView) v.findViewById(R.id.add_subject_text);
         name  = (EditText) v.findViewById(R.id.add_subject_edit_name);
 
         // Set the Dialog Title and Current Subject Name

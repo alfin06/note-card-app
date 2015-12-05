@@ -71,7 +71,6 @@ public class SubjectListFragment extends Fragment {
                 DialogSubjectFragment dialog = new DialogSubjectFragment();
                 dialog.setTargetFragment(this, REQUEST_CODE);
                 dialog.show(manager, ADD_DIALOG);
-                onResume();
                 return true;
 
             case R.id.action_delete_all:
@@ -79,7 +78,6 @@ public class SubjectListFragment extends Fragment {
                 DialogDeleteAllSubject delete_dialog  = new DialogDeleteAllSubject();
                 delete_dialog.setTargetFragment(this, REQUEST_CODE);
                 delete_dialog.show(delete_manager, DELETE_DIALOG);
-                onResume();
                 return true;
 
             default:
@@ -110,6 +108,16 @@ public class SubjectListFragment extends Fragment {
         else {
             Adapter.notifyDataSetChanged();
         }
+    }
+
+    /***************************************************************************/
+    /*                      Refresh the list after dialog                      */
+    /***************************************************************************/
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        onResume();
     }
 
     /***************************************************************************/
@@ -162,16 +170,6 @@ public class SubjectListFragment extends Fragment {
             Intent moveLayout = NoteCardListActivity.newIntent(getActivity(), mSubject.getSubjectId());
             startActivity(moveLayout);
         }
-    }
-
-    /***************************************************************************/
-    /*                      Refresh the list after dialog                      */
-    /***************************************************************************/
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-        onResume();
     }
 
     /***************************************************************************/

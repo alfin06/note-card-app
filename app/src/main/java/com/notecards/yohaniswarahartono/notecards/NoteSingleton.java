@@ -24,10 +24,10 @@ public class NoteSingleton {
     }
 
     private NoteSingleton() {
-        mSubjects = new ArrayList<>();
+        mSubjects  = new ArrayList<>();
         mNoteCards = new ArrayList<>();
         NoteCard notecard = new NoteCard();
-        Subject subject = new Subject();
+        Subject subject   = new Subject();
         subject.addNoteCard(notecard);
         mSubjects.add(subject);
     }
@@ -54,6 +54,12 @@ public class NoteSingleton {
     public void deleteAllSubject()
     {
         mSubjects.clear();
+    }
+
+
+    public void deleteAllNoteCard(Subject subject)
+    {
+        subject.deleteNoteCard();
     }
 
     public List<Subject> getSubjects() {

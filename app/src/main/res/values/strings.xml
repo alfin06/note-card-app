@@ -1,17 +1,17 @@
 <resources>
     <string name="app_name">Note Cards</string>
-
     <string name="hello_world">Hello world!</string>
     <string name="subject_name">Name : </string>
     <string name="action_settings">Settings</string>
     <string name="add_subject">Add Subject</string>
+    <string name="add_note_card">Add Note Card</string>
     <string name="action_add">Add</string>
     <string name="action_delete">Delete</string>
     <string name="action_ok">OK</string>
     <string name="edit_name">Edit Name</string>
+    <string name="action_delete_all">Are you sure ?</string>
     <string name="cancel_dialog">Cancel</string>
     <string name="subject">Subject</string>
-    <string name="title_activity_note_card_list">NoteCardListActivity</string>
-    <string name="notecardList">Notecard List</string>
-    <string name="notecard_title">Notecard Title</string>
+    <string name="notecardList">Note Card List</string>
+    <string name="notecard_title">Note Card Title :</string>
 </resources>

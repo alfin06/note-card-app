@@ -9,56 +9,39 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 
 import java.util.UUID;
 
 /**
- * Created by Alfin Rahardja on 12/4/2015.
+ * Created by Yohan Hartono on 12/4/2015.
  */
-public class DialogNoteCardFragment extends DialogFragment {
-    // Constant Variables
-    private static final String ARG_SUBJECT = "subject";
+public class DialogDeleteAllNoteCard extends DialogFragment
+{
+
 
     // Member Variables
-    private EditText name;
-    private NoteCard newNoteCard;
-    private Subject mSubject;
-    private UUID     mSubjectId;
+    private static final String SEND_NOTECARD_ID = "NoteCardID";  // Tag to send subject id
     private NoteSingleton singleton = NoteSingleton.get();
-
-    public static DialogNoteCardFragment newInstance(UUID subjectId){
-        Bundle args = new Bundle();
-        args.putSerializable(ARG_SUBJECT, subjectId);
-
-        DialogNoteCardFragment dialog = new DialogNoteCardFragment();
-        dialog.setArguments(args);
-        return dialog;
-    }
+    private Subject currentSubject;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
+        UUID subjectId = (UUID) getArguments().getSerializable(SEND_NOTECARD_ID);
+        currentSubject = singleton.getSubject(subjectId);
+
         View v = LayoutInflater.from(getActivity())
-                .inflate(R.layout.add_notecard_dialog, null);
-
-        mSubjectId = (UUID) getArguments().getSerializable(ARG_SUBJECT);
-        mSubject = singleton.getSubject(mSubjectId);
-
-        name = (EditText) v.findViewById(R.id.add_note_card_edit);
+                .inflate(R.layout.delete_dialog, null);
 
         return new AlertDialog.Builder(getActivity())
                 .setView(v)
-                .setTitle(R.string.add_note_card)
-                .setPositiveButton(R.string.action_add,
+                .setTitle("Delete All Note Cards")
+                .setPositiveButton(R.string.action_ok,
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which)
                             {
-                                String title = name.getText().toString();
-                                newNoteCard = new NoteCard();
-                                newNoteCard.setNoteCardTitle(title);
-                                singleton.addNoteCard(newNoteCard, mSubject);
+                                singleton.deleteAllNoteCard(currentSubject);
                                 notifyToTarget(Activity.RESULT_OK);
                             }
                         })
@@ -73,8 +56,4 @@ public class DialogNoteCardFragment extends DialogFragment {
             targetFragment.onActivityResult(getTargetRequestCode(), code, null);
         }
     }
-
 }
-
-
-

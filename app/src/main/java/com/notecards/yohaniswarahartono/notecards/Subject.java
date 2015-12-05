@@ -10,9 +10,9 @@ import java.util.UUID;
  */
 public class Subject {
 
-    private UUID   mSubjectId;    // Notecard ID
-    private String mTitle;        // Notecard Title
-    private int    mTotalNoteCard; // Total notecard
+    private UUID   mSubjectId;         // Notecard ID
+    private String mTitle;             // Notecard Title
+    private int    mTotalNoteCard;     // Total notecard
     private List<NoteCard> mNoteCards;
 
     // Constructor
@@ -27,6 +27,13 @@ public class Subject {
     {
         mNoteCards.add(notecard);
         mTotalNoteCard += 1;
+    }
+
+    // Add NoteCards to subject
+    public void deleteNoteCard()
+    {
+        mNoteCards.removeAll(mNoteCards);
+        mTotalNoteCard = 0;
     }
 
     /**********************************************************************/

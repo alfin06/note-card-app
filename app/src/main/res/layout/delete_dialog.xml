@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+
     <RelativeLayout
         android:paddingTop="15px"
         android:paddingLeft="25px"
@@ -19,20 +20,15 @@
             android:background="#000" />
 
         <TextView
-            android:id="@+id/add_note_card_text"
+            android:id="@+id/delete_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:paddingTop="15px"
+            android:paddingLeft="15px"
             android:textColor="#000"
-            android:text="@string/notecard_title"/>
-
-        <EditText
-            android:id="@+id/add_note_card_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/add_note_card_text"
-            android:paddingTop="15px" />
+            android:textSize="9pt"
+            android:text="@string/action_delete_all"/>
 
     </RelativeLayout>
 

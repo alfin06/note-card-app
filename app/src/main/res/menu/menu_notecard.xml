@@ -10,4 +10,11 @@
         android:orderInCategory="100"
         app:showAsAction="ifRoom|withText"/>
 
+    <item
+        android:id="@+id/action_delete_all"
+        android:title="@string/action_delete"
+        android:icon="@drawable/ic_trash_can"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom|withText"/>
+
 </menu>
