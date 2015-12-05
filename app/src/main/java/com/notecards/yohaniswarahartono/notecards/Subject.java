@@ -19,10 +19,15 @@ public class Subject {
     public Subject() {
         mSubjectId = UUID.randomUUID();
         mNoteCards = new ArrayList<>();
+        mTotalNoteCard = 0;
     }
 
     // Add NoteCards to subject
-    public void addNoteCard(NoteCard notecard) {mNoteCards.add(notecard);}
+    public void addNoteCard(NoteCard notecard)
+    {
+        mNoteCards.add(notecard);
+        mTotalNoteCard += 1;
+    }
 
     /**********************************************************************/
     /*                         Getter Functions                           */
@@ -38,11 +43,6 @@ public class Subject {
     public List<NoteCard> getNoteCards() {return mNoteCards;}
 
     public int getTotalNoteCard() {return mTotalNoteCard;}
-
-    public void setTotalNoteCard(int TotalNoteCard)
-    {
-        mTotalNoteCard = TotalNoteCard;
-    }
 
     /**********************************************************************/
     /*                         Setter Functions                           */

@@ -40,7 +40,6 @@ public class DialogSubjectFragment extends DialogFragment
                                 String title = name.getText().toString();
                                 newSubject = new Subject();
                                 newSubject.setTitle(title);
-                                newSubject.setTotalNoteCard(0);
                                 singleton.addSubject(newSubject);
                                 notifyToTarget(Activity.RESULT_OK);
                             }

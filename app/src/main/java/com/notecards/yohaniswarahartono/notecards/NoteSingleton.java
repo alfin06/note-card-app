@@ -24,6 +24,10 @@ public class NoteSingleton {
     private NoteSingleton() {
         mSubjects = new ArrayList<>();
         mNoteCards = new ArrayList<>();
+        NoteCard notecard = new NoteCard();
+        Subject subject = new Subject();
+        subject.addNoteCard(notecard);
+        mSubjects.add(subject);
     }
 
     // Get a particular subject

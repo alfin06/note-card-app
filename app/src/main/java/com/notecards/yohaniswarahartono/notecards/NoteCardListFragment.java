@@ -2,10 +2,8 @@ package com.notecards.yohaniswarahartono.notecards;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,14 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -31,10 +22,10 @@ import java.util.UUID;
  */
 public class NoteCardListFragment extends Fragment {
     // Constant variables
-    public static final String EXTRA_SUBJECT_ID = "Subject Id";
-    private static final String ADD_DIALOG      = "AddNoteCard"; // Tag for add subject dialog
+    public static final String EXTRA_SUBJECT_ID  = "Subject Id";
+    private static final String ADD_DIALOG       = "AddNoteCard"; // Tag for add subject dialog
     private static final String SEND_NOTECARD_ID = "NoteCardID";  // Tag to send subject id
-    private static final int    REQUEST_CODE    = -1;           // Request Code for receive notification
+    private static final int    REQUEST_CODE     = -1;           // Request Code for receive notification
 
 
     // Member variables
@@ -49,8 +40,17 @@ public class NoteCardListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        Log.d("a", "a");
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+    {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_notecard, menu);
+        Log.d("a", "b");
     }
 
     @Override
@@ -70,22 +70,17 @@ public class NoteCardListFragment extends Fragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
-    {
-        Log.d("a", "b");
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_main, menu);
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
+
+        Log.d("a", "b");
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        Log.d("f", "f");
         switch (id)
         {
             case R.id.action_add:
@@ -99,6 +94,7 @@ public class NoteCardListFragment extends Fragment {
             default:
                 return true;
         }
+
     }
 
     /***************************************************************************/
@@ -116,11 +112,12 @@ public class NoteCardListFragment extends Fragment {
     private void updateUserInterface() {
         NoteSingleton lab = NoteSingleton.get();
         List<NoteCard> notecards = lab.getNoteCard(mSubjectId);
-        Log.d("A", "a");
+        Log.d("A", mSubjectId.toString());
         mSubject = NoteSingleton.get().getSubject(mSubjectId);
+        Log.d("B", mSubject.getSubjectId().toString());
 
         if (mAdapter == null) {
-            mAdapter = new NoteCardAdapter(notecards, mSubject);
+            mAdapter = new NoteCardAdapter(notecards, mSubjectId);
             mNoteCardRecyclerView.setAdapter(mAdapter);
         }
         else {
@@ -142,7 +139,6 @@ public class NoteCardListFragment extends Fragment {
         public NoteCardHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            mHeadTitle = (TextView) itemView.findViewById(R.id.class_name);
             mNoteCardTitle = (TextView)itemView.findViewById(R.id.note_card_title);
             mDate = (TextView)itemView.findViewById(R.id.date);
         }
@@ -150,8 +146,7 @@ public class NoteCardListFragment extends Fragment {
         public void bindNoteCard(NoteCard notecard, int position, Subject subject) {
             mNoteCard = notecard;
             mSubject  = subject;
-            Log.d("a", "c");
-            mHeadTitle.setText(mSubject.getTitle());
+            Log.d("a", "z");
             mNoteCardTitle.setText(mNoteCard.getNoteCardTitle());
             mDate.setText(mNoteCard.getDate().toString());
         }
@@ -170,9 +165,9 @@ public class NoteCardListFragment extends Fragment {
         private List<NoteCard> mNoteCards; // Array for each book
         private Subject        mSubject;
 
-        public NoteCardAdapter(List<NoteCard> notecards, Subject subject) {
+        public NoteCardAdapter(List<NoteCard> notecards, UUID subjectId) {
             mNoteCards = notecards;
-            mSubject   = subject;
+            mSubject   = NoteSingleton.get().getSubject(subjectId);
         }
 
         @Override
@@ -184,9 +179,8 @@ public class NoteCardListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(NoteCardHolder holder, int position) {
-            Subject subject = mSubject;
             NoteCard notecard = mNoteCards.get(position);
-            holder.bindNoteCard(notecard, position, subject);
+            holder.bindNoteCard(notecard, position, mSubject);
         }
 
         @Override
