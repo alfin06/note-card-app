@@ -27,13 +27,14 @@ public class NoteCardFragment extends Fragment {
 
     // Constant Variables
     private static final String ARG_NOTECARD_ID = "NotecardID";
-    private static final String DIALOG_DATE = "DialogDate";
-    private static final String DIALOG  = "DialogNotecard"; // Tag for add subject dialog
-    private static final int    REQUEST_CODE     = -1;           // Request Code for receive notification
+    private static final String DIALOG_DATE     = "DialogDate";
+    private static final String DIALOG          = "DialogNotecard"; // Tag for add subject dialog
+    private static final int    REQUEST_CODE    = -1;           // Request Code for receive notification
 
     // Member Variables
     private NoteCard mNoteCard;     // Subject class
     private TextView mQuestion;     // Topic of the notecard
+    private TextView mDate;         // Date of notecard created
     private Button   mFlip;         // Date notecard created
 
     public static NoteCardFragment newInstance(UUID notecardId){
@@ -72,6 +73,11 @@ public class NoteCardFragment extends Fragment {
 
         mQuestion = (TextView)v.findViewById(R.id.question);
         mQuestion.setText(mNoteCard.getFrontSide());
+
+        mDate = (TextView) v.findViewById(R.id.notecard_date);
+        mDate.setText("Date: " + mNoteCard.getDate().toString());
+
+        mFlip = (Button) v.findViewById(R.id.flip);
 
 
         return v;

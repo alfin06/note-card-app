@@ -7,38 +7,54 @@
     android:background="#ffffff">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/notecard_date"
+        tools:text="Date"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/flip"
+        android:layout_alignEnd="@+id/flip"
+        android:textSize="16pt"/>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/question_label"
         android:text="@string/question"
-        android:layout_alignTop="@+id/Question"
+        android:textSize="10pt"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="134dp"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/black"
-        android:layout_below="@id/question_label"
-        android:id="@+id/line"/>
+        android:id="@+id/line"
+        android:layout_below="@+id/question_label"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="Question"
         android:id="@+id/question"
-        android:layout_marginTop="153dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/line"
-        android:textSize="20pt"/>
+        android:textSize="20pt"
+        android:layout_below="@+id/line"
+        android:layout_alignRight="@+id/flip"
+        android:layout_alignEnd="@+id/flip"
+        android:textAlignment="center"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/flip"
-        android:text="@string/flip"/>
+        android:text="@string/flip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
 
 </RelativeLayout>
