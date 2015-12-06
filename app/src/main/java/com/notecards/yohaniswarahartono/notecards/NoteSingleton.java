@@ -26,7 +26,6 @@ public class NoteSingleton {
 
     private NoteSingleton() {
         mSubjects  = new ArrayList<>();
-        mNoteCards = new ArrayList<>();
     }
 
     // Get a particular subject

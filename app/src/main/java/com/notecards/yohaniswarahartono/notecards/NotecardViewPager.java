@@ -52,7 +52,7 @@ public class NotecardViewPager extends FragmentActivity {
         mSubject = NoteSingleton.get().getSubject(subjectId);
         mViewPager = (ViewPager)findViewById(R.id.view_pager);
 
-        mNoteCards = NoteSingleton.get().getNoteCards();
+        mNoteCards = NoteSingleton.get().getNoteCard(subjectId);
         FragmentManager manager = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(manager) {
             @Override
@@ -67,7 +67,7 @@ public class NotecardViewPager extends FragmentActivity {
             }
         });
 
-        for (int i = 0; i < mNoteCards.size(); i++)
+        for (int i = 0; i < mSubject.getTotalNoteCard(); i++)
         {
             if(mNoteCards.get(i).getNoteCardId().equals(notecardId))
             {
