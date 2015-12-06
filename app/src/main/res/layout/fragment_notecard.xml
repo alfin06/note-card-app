@@ -10,17 +10,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/question_label"
-        android:text="@string/question"/>
+        android:text="@string/question"
+        android:layout_alignTop="@+id/Question"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"
+        android:layout_below="@id/question_label"
+        android:id="@+id/line"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="Question"
-        android:id="@+id/Question"
+        android:id="@+id/question"
+        android:layout_marginTop="153dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="177dp"/>
+        android:layout_below="@id/line"
+        android:textSize="20pt"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/flip"
+        android:text="@string/flip"/>
 
 
 </RelativeLayout>

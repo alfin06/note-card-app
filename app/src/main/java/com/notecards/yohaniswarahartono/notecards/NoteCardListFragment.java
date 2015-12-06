@@ -19,6 +19,7 @@ import java.util.UUID;
 /**
  * Created by Alfin Rahardja on 11/30/2015.
  */
+
 public class NoteCardListFragment extends Fragment {
     // Constant variables
     public static final String  EXTRA_SUBJECT_ID  = "Subject Id";

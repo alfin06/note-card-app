@@ -21,6 +21,7 @@
     <string name="topic_label">Topic</string>
     <string name="date_label">Date</string>
     <string name="question">Question</string>
+    <string name="flip">Flip</string>
     <string name="date_picker_label">Date of notecard</string>
     <string name="title_activity_notecard_view_pager">NotecardViewPager</string>
 </resources>
