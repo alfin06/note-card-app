@@ -12,24 +12,22 @@
         android:background="@drawable/subject_info">
 
         <TextView
-            android:id="@+id/subject_title"
+            android:id="@+id/note_card_title"
             tools:text = "Course Name"
-            android:layout_width="400px"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:paddingLeft="5px"
             android:textSize="12pt"
             android:textStyle="bold"
-            android:textColor="#2E2E2E"
-            android:ellipsize="end"
-            android:singleLine="true"/>
+            android:textColor="#2E2E2E"/>
 
         <TextView
             android:id="@+id/total_note_card"
             tools:text = "Total : 15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/subject_title"
+            android:layout_below="@+id/note_card_title"
             android:paddingLeft="15px"
             android:textSize="8pt"
             android:textColor="#494949"/>

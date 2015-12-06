@@ -153,7 +153,7 @@ public class NoteCardListFragment extends Fragment {
             super(itemView);
             itemView.setOnClickListener(this);
             mNoteCardTitle = (TextView)itemView.findViewById(R.id.note_card_title);
-            mDate = (TextView)itemView.findViewById(R.id.note_card_date);
+            mDate = (TextView)itemView.findViewById(R.id.date);
         }
 
         public void bindNoteCard(NoteCard notecard, int position, Subject subject) {
