@@ -1,24 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/note_card_title"
-        tools:text = "@string/notecard_title"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:id="@+id/layout_note_card_text"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/subject_info">
+
+        <TextView
+            android:id="@+id/note_card_title"
+            tools:text = "Note Card Title"
+            android:layout_width="320px"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="5px"
+            android:textSize="12pt"
+            android:textStyle="bold"
+            android:textColor="#2E2E2E"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+
+        <TextView
+            android:id="@+id/note_card_date"
+            tools:text = "Date"
+            android:layout_width="320px"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/note_card_title"
+            android:paddingLeft="15px"
+            android:textSize="6pt"
+            android:textColor="#494949"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"
+            android:layout_below="@id/note_card_date"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_edit_button"
+        android:paddingTop="13px"
+        android:paddingRight="80px"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:textSize="12pt"
-        android:textStyle="bold"
-        android:textColor="#2E2E2E"/>
+        android:layout_alignRight="@+id/layout_note_card_text">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/black"
-        android:layout_below="@id/note_card_title"/>
+        <Button
+            android:paddingLeft="5px"
+            android:id="@+id/edit_note_card_title_button"
+            android:layout_width="62px"
+            android:layout_height="62px"
+            android:drawableLeft="@drawable/ic_pencil"
+            android:gravity="center"
+            android:background="@drawable/button_edit"/>
 
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/layout_delete_button"
+        android:paddingTop="13px"
+        android:paddingRight="10px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/layout_edit_button">
+
+        <Button
+            android:paddingTop="2px"
+            android:paddingLeft="8px"
+            android:id="@+id/delete_note_card_button"
+            android:layout_width="62px"
+            android:layout_height="62px"
+            android:drawableLeft="@drawable/ic_delete"
+            android:gravity="center"
+            android:background="@drawable/button_delete"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

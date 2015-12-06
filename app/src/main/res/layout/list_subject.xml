@@ -14,13 +14,15 @@
         <TextView
             android:id="@+id/note_card_title"
             tools:text = "Course Name"
-            android:layout_width="wrap_content"
+            android:layout_width="400px"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:paddingLeft="5px"
             android:textSize="12pt"
             android:textStyle="bold"
-            android:textColor="#2E2E2E"/>
+            android:textColor="#2E2E2E"
+            android:ellipsize="end"
+            android:singleLine="true"/>
 
         <TextView
             android:id="@+id/total_note_card"

@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,9 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -64,8 +60,12 @@ public class NoteCardListFragment extends Fragment {
         mNoteCardRecyclerView = (RecyclerView) view.findViewById(R.id.notecard_recycler_view);
         mNoteCardRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+
+
+
         mSubjectId = (UUID) getActivity().getIntent().getSerializableExtra(EXTRA_SUBJECT_ID);
         mSubject   = NoteSingleton.get().getSubject(mSubjectId);
+
 
         mSubjectTitle = (TextView)view.findViewById(R.id.subject_name);
         mSubjectTitle.setText(mSubject.getTitle());
@@ -151,26 +151,31 @@ public class NoteCardListFragment extends Fragment {
     /*  is clicked                                                             */
     /***************************************************************************/
     private class NoteCardHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private TextView mHeadTitle;
         private TextView mNoteCardTitle;
+        private TextView mDate;
         private NoteCard mNoteCard;
-        private UUID mSubjectId;
+        private Subject  mSubject;
 
         public NoteCardHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             mNoteCardTitle = (TextView)itemView.findViewById(R.id.note_card_title);
+            mDate = (TextView)itemView.findViewById(R.id.note_card_date);
         }
 
-        public void bindNoteCard(NoteCard notecard, int position, UUID subjectId) {
-            mSubjectId = subjectId;
+        public void bindNoteCard(NoteCard notecard, int position, Subject subject) {
             mNoteCard = notecard;
+            mSubject  = subject;
             mNoteCardTitle.setText(mNoteCard.getNoteCardTitle());
+            mDate.setText(mNoteCard.getDate().toString());
         }
 
         @Override
         public void onClick(View v){
             Intent moveLayout = NotecardViewPager.newIntent(getActivity(),
-                                    mNoteCard.getNoteCardId(), mSubjectId);
+                                                            mNoteCard.getNoteCardId(),
+                                                            mSubjectId);
             startActivity(moveLayout);
         }
     }
@@ -180,11 +185,11 @@ public class NoteCardListFragment extends Fragment {
     /***************************************************************************/
     private class NoteCardAdapter extends RecyclerView.Adapter<NoteCardHolder> {
         private List<NoteCard> mNoteCards; // Array for each book
-        private UUID           mSubjectId;
+        private Subject        mSubject;
 
         public NoteCardAdapter(List<NoteCard> notecards, UUID subjectId) {
             mNoteCards = notecards;
-            mSubjectId = subjectId;
+            mSubject   = NoteSingleton.get().getSubject(subjectId);
         }
 
         @Override
@@ -197,7 +202,7 @@ public class NoteCardListFragment extends Fragment {
         @Override
         public void onBindViewHolder(NoteCardHolder holder, int position) {
             NoteCard notecard = mNoteCards.get(position);
-            holder.bindNoteCard(notecard, position, mSubjectId);
+            holder.bindNoteCard(notecard, position, mSubject);
         }
 
         @Override

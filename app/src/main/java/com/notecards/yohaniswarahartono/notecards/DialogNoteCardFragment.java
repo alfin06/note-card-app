@@ -4,28 +4,42 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.Date;
 import java.util.UUID;
 
-/**********************************************************************/
-/*                   Dialog to create new notecard                    */
-/**********************************************************************/
+/**
+ * Created by Alfin Rahardja on 12/4/2015.
+ */
 public class DialogNoteCardFragment extends DialogFragment {
     // Constant Variables
-    private static final String ARG_SUBJECT = "subject"; // Tag to get the subject
+    private static final String ARG_SUBJECT = "subject";
+    private static final String DIALOG_DATE = "dialogDatePicker";
+    private static final int    REQUEST_DATE= -1 ;
+
+    // Layout
+    private EditText topic_edit;
+    private EditText front_edit;
+    private EditText back_edit;
+    private Button   date_button;
+
 
     // Member Variables
-    private EditText name;          // user input for notecard's name
-    private NoteCard newNoteCard;   // New notecard
-    private Subject mSubject;       // Subject of the notecard
-    private UUID     mSubjectId;    // The unique subject ID
-    private NoteSingleton singleton = NoteSingleton.get();  // Singleton
+    private NoteCard newNoteCard;
+    private Subject  mSubject;
+    private UUID     mSubjectId;
+    private NoteSingleton singleton = NoteSingleton.get();
+    private Date     currentDate;
+
 
     public static DialogNoteCardFragment newInstance(UUID subjectId){
         Bundle args = new Bundle();
@@ -39,13 +53,31 @@ public class DialogNoteCardFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
+
         View v = LayoutInflater.from(getActivity())
-                .inflate(R.layout.add_subject_dialog, null);
+                .inflate(R.layout.add_notecard_dialog, null);
 
         mSubjectId = (UUID) getArguments().getSerializable(ARG_SUBJECT);
         mSubject = singleton.getSubject(mSubjectId);
 
-        name = (EditText) v.findViewById(R.id.add_subject_edit_name);
+        topic_edit  = (EditText) v.findViewById(R.id.add_note_card_edit);
+        front_edit  = (EditText) v.findViewById(R.id.add_note_card_edit_front);
+        back_edit   = (EditText) v.findViewById(R.id.add_note_card_edit_back);
+        date_button = (Button)   v.findViewById(R.id.add_note_card_date);
+
+        currentDate = new Date();
+
+        date_button.setText(currentDate.toString());
+        date_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getFragmentManager();
+                DatePickerFragment dialog = DatePickerFragment.newInstance(currentDate);
+                dialog.setTargetFragment(DialogNoteCardFragment.this, REQUEST_DATE);
+                dialog.show(manager, DIALOG_DATE);
+            }
+
+        });
 
         return new AlertDialog.Builder(getActivity())
                 .setView(v)
@@ -55,9 +87,12 @@ public class DialogNoteCardFragment extends DialogFragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which)
                             {
-                                String title = name.getText().toString();
                                 newNoteCard = new NoteCard();
-                                newNoteCard.setNoteCardTitle(title);
+                                newNoteCard.setNoteCardTitle(topic_edit.getText().toString());
+                                newNoteCard.setFrontSide(front_edit.getText().toString());
+                                newNoteCard.setBackSide(back_edit.getText().toString());
+                                newNoteCard.setDate(currentDate);
+
                                 singleton.addNoteCard(newNoteCard, mSubject);
                                 notifyToTarget(Activity.RESULT_OK);
                             }
@@ -71,6 +106,20 @@ public class DialogNoteCardFragment extends DialogFragment {
         Fragment targetFragment = getTargetFragment();
         if (targetFragment != null) {
             targetFragment.onActivityResult(getTargetRequestCode(), code, null);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if(resultCode == Activity.RESULT_OK)
+        {
+            if(requestCode == REQUEST_DATE)
+            {
+                Date date = (Date) data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
+                currentDate = date;
+                date_button.setText(date.toString());
+            }
         }
     }
 
