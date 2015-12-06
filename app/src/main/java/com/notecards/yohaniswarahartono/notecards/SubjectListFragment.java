@@ -140,7 +140,7 @@ public class SubjectListFragment extends Fragment {
         public SubjectHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            mSubjectTitle  = (TextView) itemView.findViewById(R.id.note_card_title);
+            mSubjectTitle  = (TextView) itemView.findViewById(R.id.subject_title);
             mTotalNoteCard = (TextView) itemView.findViewById(R.id.total_note_card);
             mEditButton    = (Button)   itemView.findViewById(R.id.edit_subject_name_button);
             mEditButton.setOnClickListener(new View.OnClickListener() {
