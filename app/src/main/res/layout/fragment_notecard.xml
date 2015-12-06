@@ -11,17 +11,24 @@
         android:layout_height="wrap_content"
         android:id="@+id/subject"
         tools:text="Subject"
-        android:textSize="12pt"/>
+        android:textSize="12pt"
+        android:textStyle="bold"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#ff6347"
+        android:textColor="#ffffff"
+        android:layout_alignRight="@+id/notecard_date"
+        android:layout_alignEnd="@+id/notecard_date"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/notecard_date"
         tools:text="Date"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/flip"
-        android:layout_alignEnd="@+id/flip"
-        android:textSize="12pt"/>
+        android:textSize="8pt"
+        android:layout_below="@+id/subject"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -29,15 +36,17 @@
         android:id="@+id/question_label"
         android:text="@string/question"
         android:textSize="10pt"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="44dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/subject"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="134dp"/>
+        android:layout_alignParentStart="true"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/black"
+        android:background="#ff0000"
         android:id="@+id/line"
         android:layout_below="@+id/question_label"
         android:layout_alignParentLeft="true"
@@ -48,11 +57,14 @@
         android:layout_height="wrap_content"
         tools:text="Question"
         android:id="@+id/question"
-        android:textSize="20pt"
+        android:textSize="14pt"
+        android:textAlignment="center"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:textStyle="bold"
+        android:typeface="serif"
         android:layout_below="@+id/line"
-        android:layout_alignRight="@+id/flip"
-        android:layout_alignEnd="@+id/flip"
-        android:textAlignment="center"/>
+        />
 
     <Button
         android:layout_width="wrap_content"
@@ -60,8 +72,7 @@
         android:id="@+id/flip"
         android:text="@string/flip"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"/>
+        android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>
