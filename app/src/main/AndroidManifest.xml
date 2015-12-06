@@ -20,7 +20,7 @@
 
         </activity>
         <activity
-            android:name=".NotecardViewPager" >
+            android:name=".NoteCardActivity" >
 
         </activity>
     </application>

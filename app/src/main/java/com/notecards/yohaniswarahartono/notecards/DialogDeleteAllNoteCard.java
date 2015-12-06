@@ -9,16 +9,13 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-
 import java.util.UUID;
 
-/**
- * Created by Yohan Hartono on 12/4/2015.
- */
+/**********************************************************************/
+/*                          Delete all notecards                      */
+/**********************************************************************/
 public class DialogDeleteAllNoteCard extends DialogFragment
 {
-
-
     // Member Variables
     private static final String SEND_NOTECARD_ID = "NoteCardID";  // Tag to send subject id
     private NoteSingleton singleton = NoteSingleton.get();

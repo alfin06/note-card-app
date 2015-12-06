@@ -5,15 +5,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Created by Alfin Rahardja on 11/21/2015.
- */
+/**********************************************************************/
+/*                              Class Subject                         */
+/**********************************************************************/
 public class Subject {
-
-    private UUID   mSubjectId;         // Notecard ID
-    private String mTitle;             // Notecard Title
-    private int    mTotalNoteCard;     // Total notecard
-    private List<NoteCard> mNoteCards;
+    // Member variables
+    private UUID   mSubjectId;          // Subject ID
+    private String mTitle;              // Subject Title
+    private int    mTotalNoteCard;      // Total notecards in the subject
+    private List<NoteCard> mNoteCards;  // List of notecards
 
     // Constructor
     public Subject() {
@@ -29,7 +29,7 @@ public class Subject {
         mTotalNoteCard += 1;
     }
 
-    // Add NoteCards to subject
+    // Delete NoteCards from subject
     public void deleteNoteCard()
     {
         mNoteCards.removeAll(mNoteCards);

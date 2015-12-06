@@ -11,15 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
-/**
- * Created by Yohan Hartono on 12/1/2015.
- */
+/**********************************************************************/
+/*                   Dialog to create a new subject                   */
+/**********************************************************************/
 public class DialogSubjectFragment extends DialogFragment
 {
     // Member Variables
-    private EditText name;
-    private Subject newSubject;
-    private NoteSingleton singleton = NoteSingleton.get();
+    private EditText name;      // User input for subject's name
+    private Subject newSubject; // New subject
+    private NoteSingleton singleton = NoteSingleton.get(); // Singleton
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)

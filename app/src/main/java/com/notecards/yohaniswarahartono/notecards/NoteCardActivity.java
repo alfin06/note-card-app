@@ -7,9 +7,9 @@ import android.support.v4.app.Fragment;
 
 import java.util.UUID;
 
-/**
- * Created by Alfin Rahardja on 12/5/2015.
- */
+/**********************************************************************/
+/*                          Notecard Activity                         */
+/**********************************************************************/
 public class NoteCardActivity extends SingleFragmentActivity {
     public static final String EXTRA_SUBJECT_ID = "SubjectId";
     public static final String EXTRA_NOTECARD_ID = "NotecardId";

@@ -20,22 +20,23 @@ import android.widget.TextView;
 import java.util.Date;
 import java.util.UUID;
 
-/**
- * Created by Alfin Rahardja on 12/5/2015.
- */
+/**********************************************************************/
+/*                          Notecard Fragment                         */
+/**********************************************************************/
 public class NoteCardFragment extends Fragment {
 
     // Constant Variables
-    private static final String ARG_NOTECARD_ID = "NotecardID";
-    private static final String DIALOG_DATE     = "DialogDate";
+    private static final String ARG_NOTECARD_ID = "NotecardID";     // Argument to get notecard ID
+    private static final String DIALOG_DATE     = "DialogDate";     // Tag for add dialog date
     private static final String DIALOG          = "DialogNotecard"; // Tag for add subject dialog
-    private static final int    REQUEST_CODE    = -1;           // Request Code for receive notification
+    private static final int    REQUEST_CODE    = -1;               // Request Code for receive notification
 
     // Member Variables
     private NoteCard mNoteCard;     // Subject class
     private TextView mQuestion;     // Topic of the notecard
     private TextView mDate;         // Date of notecard created
-    private Button   mFlip;         // Date notecard created
+    private TextView mSubject;      // The subject
+    private Button   mFlip;         // Flip to back side of notecard button
 
     public static NoteCardFragment newInstance(UUID notecardId){
         Bundle args = new Bundle();
@@ -47,7 +48,7 @@ public class NoteCardFragment extends Fragment {
     }
 
     /***************************************************************************/
-    /*                    Create the layout for Notecard                      */
+    /*                    Create the layout for Notecard                       */
     /***************************************************************************/
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -70,6 +71,8 @@ public class NoteCardFragment extends Fragment {
 
         UUID notecardId = (UUID)getArguments().getSerializable(ARG_NOTECARD_ID);
         mNoteCard = NoteSingleton.get().getParticularNoteCard(notecardId);
+
+        mSubject = (TextView)v.findViewById(R.id.subject);
 
         mQuestion = (TextView)v.findViewById(R.id.question);
         mQuestion.setText(mNoteCard.getFrontSide());

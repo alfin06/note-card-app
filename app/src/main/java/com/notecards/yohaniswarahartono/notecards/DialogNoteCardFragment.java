@@ -13,19 +13,19 @@ import android.widget.EditText;
 
 import java.util.UUID;
 
-/**
- * Created by Alfin Rahardja on 12/4/2015.
- */
+/**********************************************************************/
+/*                   Dialog to create new notecard                    */
+/**********************************************************************/
 public class DialogNoteCardFragment extends DialogFragment {
     // Constant Variables
-    private static final String ARG_SUBJECT = "subject";
+    private static final String ARG_SUBJECT = "subject"; // Tag to get the subject
 
     // Member Variables
-    private EditText name;
-    private NoteCard newNoteCard;
-    private Subject mSubject;
-    private UUID     mSubjectId;
-    private NoteSingleton singleton = NoteSingleton.get();
+    private EditText name;          // user input for notecard's name
+    private NoteCard newNoteCard;   // New notecard
+    private Subject mSubject;       // Subject of the notecard
+    private UUID     mSubjectId;    // The unique subject ID
+    private NoteSingleton singleton = NoteSingleton.get();  // Singleton
 
     public static DialogNoteCardFragment newInstance(UUID subjectId){
         Bundle args = new Bundle();

@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 import java.util.UUID;
 
-/**
- * Created by Alfin Rahardja on 11/3/2015.
- */
+/**********************************************************************/
+/*                          Notecard List Activity                    */
+/**********************************************************************/
 public class NoteCardListActivity extends SingleFragmentActivity {
 
     public static final String EXTRA_SUBJECT_ID = "Subject Id";

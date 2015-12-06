@@ -14,18 +14,18 @@ import android.widget.TextView;
 
 import java.util.UUID;
 
-/**
- * Created by Yohan Hartono on 12/2/2015.
- */
+/**********************************************************************/
+/*                        Edit the subject name                       */
+/**********************************************************************/
 public class DialogEditSubjectName extends DialogFragment
 {
     // Constant Variables
-    private static final String SEND_SUBJECT_ID = "SubjectID";
+    private static final String SEND_SUBJECT_ID = "SubjectID"; // Tag to get the subject ID
 
     // Member Variables
-    private Subject currentSubject;
-    private EditText name;
-    private NoteSingleton singleton = NoteSingleton.get();
+    private Subject currentSubject; // Current subject
+    private EditText name;          // Name of the subject
+    private NoteSingleton singleton = NoteSingleton.get(); // Singleton
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)

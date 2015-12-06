@@ -12,14 +12,18 @@ import android.support.v4.view.ViewPager;
 import java.util.List;
 import java.util.UUID;
 
+/**********************************************************************/
+/*                        Notecard View Pager                         */
+/**********************************************************************/
 public class NotecardViewPager extends FragmentActivity {
 
     // Constant Variables
     private static final String EXTRA_NOTECARD_ID = "NotecardID";
+                                        // Tag to get Notecard ID
 
     // Member Variables
-    private ViewPager mViewPager;
-    private List<NoteCard> mNoteCards;
+    private ViewPager mViewPager;       // The view pager
+    private List<NoteCard> mNoteCards;  // List of notecards
 
     public static Intent newIntent(Context packageContext, UUID notecardId)
     {

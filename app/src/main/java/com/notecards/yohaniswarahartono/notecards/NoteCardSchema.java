@@ -1,8 +1,8 @@
 package com.notecards.yohaniswarahartono.notecards;
 
-/**
- * Created by Alfin Rahardja on 11/27/2015.
- */
+/**********************************************************************/
+/*                            Notecard Schema                         */
+/**********************************************************************/
 public class NoteCardSchema {
     public static final class NoteCardTable {
         public static final String NAME = "Subject";

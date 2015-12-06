@@ -7,14 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Created by Alfin Rahardja on 11/21/2015.
- */
+/**********************************************************************/
+/*                           Notecard Singleton                       */
+/**********************************************************************/
 public class NoteSingleton {
-    private static NoteSingleton sNoteSingleton;
-    private List<Subject> mSubjects;
-    private List<NoteCard> mNoteCards;
-    private Context myContext;
+    // Member variables
+    private static NoteSingleton sNoteSingleton;    // The singleton
+    private List<Subject> mSubjects;                // List of subjects
+    private List<NoteCard> mNoteCards;              // List of notecards
+    private Context myContext;                      // Context
 
     public static NoteSingleton get() {
         if (sNoteSingleton == null) {

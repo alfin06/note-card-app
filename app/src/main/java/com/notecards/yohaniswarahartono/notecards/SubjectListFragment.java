@@ -17,12 +17,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import java.util.List;
 
+/**********************************************************************/
+/*                          Subject List Fragment                     */
+/**********************************************************************/
 public class SubjectListFragment extends Fragment {
     // Constant Variables
-    private static final String ADD_DIALOG      = "AddSubject"; // Tag for add subject dialog
+    private static final String ADD_DIALOG      = "AddSubject";   // Tag for add subject dialog
     private static final String DELETE_DIALOG   = "DeleteDialog"; // Tag for add subject dialog
-    private static final String SEND_SUBJECT_ID = "SubjectID";  // Tag to send subject id
-    private static final int    REQUEST_CODE    = -1;           // Request Code for receive notification
+    private static final String SEND_SUBJECT_ID = "SubjectID";    // Tag to send subject id
+    private static final int    REQUEST_CODE    = -1;             // Request Code for receive notification
 
     // Member variables
     private RecyclerView    SubjectRecyclerView; // Recycler View for subject list

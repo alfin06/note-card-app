@@ -16,21 +16,20 @@ import android.widget.TextView;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Created by Alfin Rahardja on 11/30/2015.
- */
+/**********************************************************************/
+/*                          Notecard List Fragment                    */
+/**********************************************************************/
 
 public class NoteCardListFragment extends Fragment {
     // Constant variables
-    public static final String  EXTRA_SUBJECT_ID  = "Subject Id";
+    public static final String  EXTRA_SUBJECT_ID  = "Subject Id"; // Extra to get subject ID
     private static final String ADD_DIALOG       = "AddNoteCard"; // Tag for add subject dialog
     private static final String DELETE_DIALOG   = "DeleteDialog"; // Tag for add subject dialog
     private static final String SEND_NOTECARD_ID = "NoteCardID";  // Tag to send subject id
-    private static final int    REQUEST_CODE     = -1;           // Request Code for receive notification
-
+    private static final int    REQUEST_CODE     = -1;            // Request Code for receive notification
 
     // Member variables
-    private RecyclerView    mNoteCardRecyclerView; // Book recycler view
+    private RecyclerView    mNoteCardRecyclerView; // Notecard recycler view
     private NoteCardAdapter mAdapter;              // Adapter
     private UUID            mSubjectId;            // Unique subject Id
     private Subject         mSubject;              // Specific subject

@@ -12,16 +12,17 @@ import android.view.View;
 
 import java.util.UUID;
 
-/**
- * Created by Yohan Hartono on 12/4/2015.
- */
+/**********************************************************************/
+/*                          Delete all subjects                       */
+/**********************************************************************/
 public class DialogDeleteAllSubject extends DialogFragment
 {
-
+    // Constant variables
     private static final String SEND_NOTECARD_ID = "NoteCardID";  // Tag to send subject id
+
     // Member Variables
-    private NoteSingleton singleton = NoteSingleton.get();
-    private Subject currentSubject;
+    private NoteSingleton singleton = NoteSingleton.get();  // The singleton
+    private Subject currentSubject;                         // The current subject
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)

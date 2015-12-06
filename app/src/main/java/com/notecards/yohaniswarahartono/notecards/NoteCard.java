@@ -5,18 +5,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Created by Alfin Rahardja on 11/30/2015.
- */
+/**********************************************************************/
+/*                             Class Notecard                         */
+/**********************************************************************/
 public class NoteCard {
-
     // Member variables
-    private String mBackSide;     // Other side
-    private UUID mNoteCardId;      // Unique NoteCard Id
+    private String mBackSide;      // Back side of the notecard
+    private UUID   mNoteCardId;    // Unique Notecard Id
     private String mNoteCardTitle; // NoteCard title
-    private Date mDate;            // Notecard Date
-    private String mFrontSide;
-
+    private Date   mDate;          // The date notecard created
+    private String mFrontSide;     // Front side of the notecard
 
     // Constructor
     public NoteCard() {

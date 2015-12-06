@@ -7,19 +7,19 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
-
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by Alfin Rahardja on 12/5/2015.
- */
+/**********************************************************************/
+/*                  Create date picker for each notecard              */
+/**********************************************************************/
 public class DatePickerFragment extends DialogFragment {
+
     // Constant Variables
-    private static final String ARG_DATE = "date";
+    private static final String ARG_DATE = "date"; //Argument for get the date
 
     // Member Variables
-    private DatePicker mDatePicker;
+    private DatePicker mDatePicker; // Pick the date
 
     public static DatePickerFragment newInstance(Date date) {
         Bundle args = new Bundle();
@@ -30,6 +30,9 @@ public class DatePickerFragment extends DialogFragment {
         return fragment;
     }
 
+    /**********************************************************************/
+    /*             Create the dialog for picking the date                 */
+    /**********************************************************************/
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
