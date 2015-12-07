@@ -55,7 +55,7 @@
             android:id="@+id/edit_subject_name_button"
             android:layout_width="62px"
             android:layout_height="62px"
-            android:drawableLeft="@drawable/ic_erase"
+            android:drawableLeft="@drawable/ic_pencil"
             android:gravity="center"
             android:background="@drawable/button_edit"/>
 

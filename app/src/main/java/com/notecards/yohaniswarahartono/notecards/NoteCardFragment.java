@@ -114,7 +114,7 @@ public class NoteCardFragment extends Fragment {
         {
             case R.id.action_edit:
                 FragmentManager        manager = getActivity().getSupportFragmentManager();
-             /*   DialogNoteCardFragment dialog  = DialogNoteCardFragment.newInstance(mSubjectId);
+             /*   DialogAddNoteCard dialog  = DialogAddNoteCard.newInstance(mSubjectId);
                 dialog.setTargetFragment(this, REQUEST_CODE);
                 dialog.show(manager, DIALOG); */
                 return true;

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -71,7 +70,7 @@ public class SubjectListFragment extends Fragment {
         {
             case R.id.action_add:
                 FragmentManager manager = getFragmentManager();
-                DialogSubjectFragment dialog = new DialogSubjectFragment();
+                DialogAddSubject dialog = new DialogAddSubject();
                 dialog.setTargetFragment(this, REQUEST_CODE);
                 dialog.show(manager, ADD_DIALOG);
                 return true;
@@ -152,7 +151,7 @@ public class SubjectListFragment extends Fragment {
 
                     // Setup the Dialog
                     FragmentManager manager = getFragmentManager();
-                    DialogEditSubjectName editDialog = new DialogEditSubjectName();
+                    DialogEditSubject editDialog = new DialogEditSubject();
                     editDialog.setArguments(subject_id);
                     editDialog.setTargetFragment(SubjectListFragment.this, REQUEST_CODE);
                     editDialog.show(manager, ADD_DIALOG);

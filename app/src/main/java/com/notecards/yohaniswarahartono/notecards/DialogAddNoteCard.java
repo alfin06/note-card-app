@@ -20,7 +20,7 @@ import java.util.UUID;
 /**
  * Created by Alfin Rahardja on 12/4/2015.
  */
-public class DialogNoteCardFragment extends DialogFragment {
+public class DialogAddNoteCard extends DialogFragment {
     // Constant Variables
     private static final String ARG_SUBJECT = "subject";
     private static final String DIALOG_DATE = "dialogDatePicker";
@@ -39,16 +39,6 @@ public class DialogNoteCardFragment extends DialogFragment {
     private UUID     mSubjectId;
     private NoteSingleton singleton = NoteSingleton.get();
     private Date     currentDate;
-
-
-    public static DialogNoteCardFragment newInstance(UUID subjectId){
-        Bundle args = new Bundle();
-        args.putSerializable(ARG_SUBJECT, subjectId);
-
-        DialogNoteCardFragment dialog = new DialogNoteCardFragment();
-        dialog.setArguments(args);
-        return dialog;
-    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
@@ -73,7 +63,7 @@ public class DialogNoteCardFragment extends DialogFragment {
             public void onClick(View v) {
                 FragmentManager manager = getFragmentManager();
                 DatePickerFragment dialog = DatePickerFragment.newInstance(currentDate);
-                dialog.setTargetFragment(DialogNoteCardFragment.this, REQUEST_DATE);
+                dialog.setTargetFragment(DialogAddNoteCard.this, REQUEST_DATE);
                 dialog.show(manager, DIALOG_DATE);
             }
 
@@ -107,6 +97,15 @@ public class DialogNoteCardFragment extends DialogFragment {
         if (targetFragment != null) {
             targetFragment.onActivityResult(getTargetRequestCode(), code, null);
         }
+    }
+
+    public static DialogAddNoteCard newInstance(UUID subjectId){
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_SUBJECT, subjectId);
+
+        DialogAddNoteCard dialog = new DialogAddNoteCard();
+        dialog.setArguments(args);
+        return dialog;
     }
 
     @Override

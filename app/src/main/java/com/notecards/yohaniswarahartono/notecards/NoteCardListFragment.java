@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import java.util.List;
 import java.util.UUID;
@@ -24,6 +25,7 @@ public class NoteCardListFragment extends Fragment {
     // Constant variables
     public static final String  EXTRA_SUBJECT_ID  = "Subject Id"; // Extra to get subject ID
     private static final String ADD_DIALOG       = "AddNoteCard"; // Tag for add subject dialog
+    private static final String EDIT_DIALOG    = "EditDialog";  // Tag for edit dialog
     private static final String DELETE_DIALOG   = "DeleteDialog"; // Tag for add subject dialog
     private static final String SEND_NOTECARD_ID = "NoteCardID";  // Tag to send subject id
     private static final int    REQUEST_CODE     = -1;            // Request Code for receive notification
@@ -88,7 +90,7 @@ public class NoteCardListFragment extends Fragment {
         {
             case R.id.action_add:
                 FragmentManager        manager = getActivity().getSupportFragmentManager();
-                DialogNoteCardFragment dialog  = DialogNoteCardFragment.newInstance(mSubjectId);
+                DialogAddNoteCard dialog  = DialogAddNoteCard.newInstance(mSubjectId);
                 dialog.setTargetFragment(this, REQUEST_CODE);
                 dialog.show(manager, ADD_DIALOG);
                 return true;
@@ -151,9 +153,9 @@ public class NoteCardListFragment extends Fragment {
     /*  is clicked                                                             */
     /***************************************************************************/
     private class NoteCardHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView mHeadTitle;
         private TextView mNoteCardTitle;
         private TextView mDate;
+        private Button   mEditButton;
         private NoteCard mNoteCard;
         private Subject  mSubject;
 
@@ -162,6 +164,19 @@ public class NoteCardListFragment extends Fragment {
             itemView.setOnClickListener(this);
             mNoteCardTitle = (TextView)itemView.findViewById(R.id.note_card_title);
             mDate = (TextView)itemView.findViewById(R.id.note_card_date);
+            mEditButton    = (Button)   itemView.findViewById(R.id.edit_note_card_title_button);
+            mEditButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Setup the Dialog
+                    FragmentManager manager = getFragmentManager();
+                    UUID send_notecard_id = mNoteCard.getNoteCardId();
+                    DialogEditNoteCard editDialog = DialogEditNoteCard.newInstance(send_notecard_id);
+                    editDialog.setTargetFragment(NoteCardListFragment.this, REQUEST_CODE);
+                    editDialog.show(manager, EDIT_DIALOG);
+                    onResume();
+                }
+            });
         }
 
         public void bindNoteCard(NoteCard notecard, int position, Subject subject) {

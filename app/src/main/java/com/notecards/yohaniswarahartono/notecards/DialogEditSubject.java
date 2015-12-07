@@ -17,7 +17,7 @@ import java.util.UUID;
 /**********************************************************************/
 /*                        Edit the subject name                       */
 /**********************************************************************/
-public class DialogEditSubjectName extends DialogFragment
+public class DialogEditSubject extends DialogFragment
 {
     // Constant Variables
     private static final String SEND_SUBJECT_ID = "SubjectID"; // Tag to get the subject ID
@@ -31,7 +31,6 @@ public class DialogEditSubjectName extends DialogFragment
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
         UUID subjectId = (UUID) getArguments().getSerializable(SEND_SUBJECT_ID);
-
         currentSubject = singleton.getSubject(subjectId);
 
         View v = LayoutInflater.from(getActivity())

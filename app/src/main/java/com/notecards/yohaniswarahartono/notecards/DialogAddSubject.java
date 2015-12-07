@@ -14,7 +14,7 @@ import android.widget.EditText;
 /**********************************************************************/
 /*                   Dialog to create a new subject                   */
 /**********************************************************************/
-public class DialogSubjectFragment extends DialogFragment
+public class DialogAddSubject extends DialogFragment
 {
     // Member Variables
     private EditText name;      // User input for subject's name
