@@ -1,35 +1,41 @@
 <resources>
-    <string name="app_name">Note Cards</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="subject_name">Name : </string>
+    <string name="action_add">Add</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_delete_all">Delete All</string>
+    <string name="action_edit">edit</string>
+    <string name="action_ok">OK</string>
     <string name="action_settings">Settings</string>
     <string name="add_subject">Add Subject</string>
     <string name="add_note_card">Add Notecard</string>
-    <string name="action_add">Add</string>
-    <string name="action_edit">edit</string>
-    <string name="action_delete">Delete</string>
-    <string name="action_ok">OK</string>
-    <string name="edit_name">Edit Name</string>
+    <string name="app_name">Note Cards</string>
+
+    <string name="back">Back :</string>
+
     <string name="cancel_dialog">Cancel</string>
-    <string name="subject">Subject</string>
-    <string name="title_activity_note_card_list">NoteCardListActivity</string>
+
+    <string name="date_label">Date</string>
+    <string name="date_picker_label">Date of notecard</string>
+
+    <string name="edit_name">Edit Name</string>
+    <string name="edit_note_card">Edit Note Card</string>
+
+    <string name="flip">Flip</string>
+    <string name="front">Front :</string>
+
+    <string name="hello_world">Hello world!</string>
+
     <string name="notecardList">Notecard List</string>
-    <string name="action_delete_all">Delete All</string>
+    <string name="notecard_title">Note Card Title :</string>
+
+    <string name="question">Question</string>
+
+    <string name="subject">Subject</string>
+    <string name="subject_name">Name : </string>
+
+    <string name="title_activity_back_side_notecard">BackSideNotecard</string>
+    <string name="title_activity_note_card_list">NoteCardListActivity</string>
+    <string name="title_activity_notecard_view_pager">NotecardViewPager</string>
     <string name="topic_hint">Enter your topic here</string>
     <string name="topic_label">Topic</string>
-    <string name="date_label">Date</string>
-    <string name="question">Question</string>
-    <string name="flip">Flip</string>
-    <string name="date_picker_label">Date of notecard</string>
-    <string name="title_activity_notecard_view_pager">NotecardViewPager</string>
-    <string name="title_activity_back_side_notecard">BackSideNotecard</string>
 
-
-    <!--Dialog Note Card-->
-    <string name="notecard_title">Note Card Title :</string>
-    <string name="front"         >Front :</string>
-    <string name="back"          >Back :</string>
-
-    <string name="edit_note_card">Edit Note Card</string>
 </resources>
