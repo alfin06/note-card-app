@@ -39,6 +39,7 @@ public class NoteCardFragment extends Fragment {
     private TextView mQuestion;     // Topic of the notecard
     private TextView mDate;         // Date of notecard created
     private TextView mSubjectName;  // The subject name
+    private TextView mNotecardTitle;// Note card title
     private Button   mFlip;         // Flip to back side of notecard button
 
     public static NoteCardFragment newInstance(UUID notecardId, UUID subjectId){
@@ -57,14 +58,6 @@ public class NoteCardFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
-    {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_notecard, menu);
     }
 
     @Override
@@ -80,6 +73,9 @@ public class NoteCardFragment extends Fragment {
 
         mSubjectName = (TextView)v.findViewById(R.id.subject);
         mSubjectName.setText(mSubject.getTitle());
+
+        mNotecardTitle = (TextView)v.findViewById(R.id.notecard_title_front);
+        mNotecardTitle.setText(mNoteCard.getNoteCardTitle());
 
         mQuestion = (TextView)v.findViewById(R.id.question);
         mQuestion.setText(mNoteCard.getFrontSide());
@@ -97,30 +93,6 @@ public class NoteCardFragment extends Fragment {
             }
         });
 
-
         return v;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        switch (id)
-        {
-            case R.id.action_edit:
-                FragmentManager        manager = getActivity().getSupportFragmentManager();
-             /*   DialogAddNoteCard dialog  = DialogAddNoteCard.newInstance(mSubjectId);
-                dialog.setTargetFragment(this, REQUEST_CODE);
-                dialog.show(manager, DIALOG); */
-                return true;
-
-            default:
-                return true;
-        }
     }
 }

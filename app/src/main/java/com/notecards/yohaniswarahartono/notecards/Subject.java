@@ -26,14 +26,22 @@ public class Subject {
     public void addNoteCard(NoteCard notecard)
     {
         mNoteCards.add(notecard);
-        mTotalNoteCard += 1;
+        mTotalNoteCard = mNoteCards.size();
     }
 
     // Delete NoteCards from subject
-    public void deleteNoteCard()
+    public void deleteAllNoteCard()
     {
         mNoteCards.removeAll(mNoteCards);
         mTotalNoteCard = 0;
+    }
+
+
+    // Delete NoteCards from subject
+    public void deleteNoteCard(NoteCard notecard)
+    {
+        mNoteCards.remove(notecard);
+        mTotalNoteCard = mNoteCards.size();
     }
 
     /**********************************************************************/
@@ -49,7 +57,7 @@ public class Subject {
 
     public List<NoteCard> getNoteCards() {return mNoteCards;}
 
-    public int getTotalNoteCard() {return mTotalNoteCard;}
+    public int getTotalNoteCard() {return mNoteCards.size();}
 
     /**********************************************************************/
     /*                         Setter Functions                           */

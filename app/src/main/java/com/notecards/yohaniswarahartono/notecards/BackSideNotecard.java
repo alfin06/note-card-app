@@ -25,6 +25,7 @@ public class BackSideNotecard extends AppCompatActivity {
     private NoteCard mNoteCard;     // Notecard class
     private Subject  mSubject;      // Subject class
     private TextView mSubjectName;  // Subject name
+    private TextView mNotecardTitle;// Note card title
     private TextView mDate;         // Date of notecard
     private TextView mAnswer;       // Answer
     private Button   mFlip;         // Flip button
@@ -53,7 +54,10 @@ public class BackSideNotecard extends AppCompatActivity {
         mSubjectName = (TextView)findViewById(R.id.subject);
         mSubjectName.setText(mSubject.getTitle());
 
-        mDate = (TextView)findViewById(R.id.notecard_date);
+        mNotecardTitle = (TextView)findViewById(R.id.notecard_title_back);
+        mNotecardTitle.setText(mNoteCard.getNoteCardTitle());
+
+        mDate = (TextView)findViewById(R.id.notecard_date_back);
         mDate.setText(mNoteCard.getDate().toString());
 
         mAnswer = (TextView)findViewById(R.id.answer);

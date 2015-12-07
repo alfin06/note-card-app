@@ -171,7 +171,8 @@ public class NoteCardListFragment extends Fragment {
                     // Setup the Dialog
                     FragmentManager manager = getFragmentManager();
                     UUID send_notecard_id = mNoteCard.getNoteCardId();
-                    DialogEditNoteCard editDialog = DialogEditNoteCard.newInstance(send_notecard_id);
+                    UUID send_subject_id = mSubject.getSubjectId();
+                    DialogEditNoteCard editDialog = DialogEditNoteCard.newInstance(send_notecard_id, send_subject_id);
                     editDialog.setTargetFragment(NoteCardListFragment.this, REQUEST_CODE);
                     editDialog.show(manager, EDIT_DIALOG);
                     onResume();

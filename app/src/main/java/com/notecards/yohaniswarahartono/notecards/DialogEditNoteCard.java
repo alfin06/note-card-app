@@ -24,6 +24,7 @@ public class DialogEditNoteCard extends DialogFragment
 {
     // Constant Variables
     private static final String SEND_NOTECARD_ID = "NoteCardID";
+    private static final String SEND_SUBJECT_ID = "SubjectID";
     private static final String DIALOG_DATE = "dialogDatePicker";
     private static final int    REQUEST_DATE= -1 ;
 
@@ -37,16 +38,21 @@ public class DialogEditNoteCard extends DialogFragment
     // Member Variables
     private NoteCard      current_notecard;
     private NoteSingleton singleton = NoteSingleton.get();
+    private Subject       current_subject;
 
-    private UUID          notecard_Id;
+    private UUID          notecard_id;
+    private UUID          subject_id;
     private Date          currentDate;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
 
-        notecard_Id      = (UUID) getArguments().getSerializable(SEND_NOTECARD_ID);
-        current_notecard = singleton.getParticularNoteCard(notecard_Id);
+        notecard_id      = (UUID) getArguments().getSerializable(SEND_NOTECARD_ID);
+        current_notecard = singleton.getParticularNoteCard(notecard_id);
+
+        subject_id       = (UUID) getArguments().getSerializable(SEND_SUBJECT_ID);
+        current_subject  = singleton.getSubject(subject_id);
 
         View v = LayoutInflater.from(getActivity())
                 .inflate(R.layout.add_notecard_dialog, null);
@@ -81,8 +87,7 @@ public class DialogEditNoteCard extends DialogFragment
                 .setPositiveButton(R.string.action_edit,
                         new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialog, int which)
-                            {
+                            public void onClick(DialogInterface dialog, int which) {
                                 current_notecard.setNoteCardTitle(topic_edit.getText().toString());
                                 current_notecard.setFrontSide(front_edit.getText().toString());
                                 current_notecard.setBackSide(back_edit.getText().toString());
@@ -92,6 +97,14 @@ public class DialogEditNoteCard extends DialogFragment
                             }
                         })
                 .setNegativeButton(R.string.cancel_dialog, null)
+                .setNeutralButton(R.string.action_delete,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                singleton.deleteNoteCard(current_subject, current_notecard);
+                                notifyToTarget(Activity.RESULT_OK);
+                            }
+                        })
                 .create();
     }
 
@@ -103,9 +116,10 @@ public class DialogEditNoteCard extends DialogFragment
         }
     }
 
-    public static DialogEditNoteCard newInstance(UUID notecard_Id){
+    public static DialogEditNoteCard newInstance(UUID n_id, UUID s_id){
         Bundle args = new Bundle();
-        args.putSerializable(SEND_NOTECARD_ID, notecard_Id);
+        args.putSerializable(SEND_NOTECARD_ID, n_id);
+        args.putSerializable(SEND_SUBJECT_ID, s_id);
 
         DialogEditNoteCard dialog = new DialogEditNoteCard();
         dialog.setArguments(args);

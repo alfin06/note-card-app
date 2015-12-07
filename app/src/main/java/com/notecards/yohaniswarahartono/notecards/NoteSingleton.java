@@ -52,10 +52,14 @@ public class NoteSingleton {
         mSubjects.clear();
     }
 
+    public void deleteNoteCard(Subject subject, NoteCard note)
+    {
+        subject.deleteNoteCard(note);
+    }
 
     public void deleteAllNoteCard(Subject subject)
     {
-        subject.deleteNoteCard();
+        subject.deleteAllNoteCard();
     }
 
     public List<Subject> getSubjects() {
@@ -100,13 +104,4 @@ public class NoteSingleton {
         subject.addNoteCard(noteCard);
     }
 
-    public void deleteNoteCard(Subject n) {
-        int location = 0;
-        for (Subject subject : getSubjects()) {
-            if(subject.getSubjectId().equals(n.getSubjectId()))
-                mSubjects.remove(location);
-
-            location++;
-        }
-    }
 }

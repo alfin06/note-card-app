@@ -47,7 +47,7 @@
     <RelativeLayout
         android:id="@+id/layout_edit_button"
         android:paddingTop="13px"
-        android:paddingRight="80px"
+        android:paddingRight="10px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -61,27 +61,6 @@
             android:drawableLeft="@drawable/ic_pencil"
             android:gravity="center"
             android:background="@drawable/button_edit"/>
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/layout_delete_button"
-        android:paddingTop="13px"
-        android:paddingRight="10px"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/layout_edit_button">
-
-        <Button
-            android:paddingTop="2px"
-            android:paddingLeft="8px"
-            android:id="@+id/delete_note_card_button"
-            android:layout_width="62px"
-            android:layout_height="62px"
-            android:drawableLeft="@drawable/ic_delete"
-            android:gravity="center"
-            android:background="@drawable/button_delete"/>
 
     </RelativeLayout>
 
